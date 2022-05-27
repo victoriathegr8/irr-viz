@@ -1,0 +1,876 @@
+
+<html>
+<head>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+<style>
+body {
+  font-size:0;
+}
+body * {
+  font-size:initial;
+}
+svg {
+  border: 1px solid #ccc;
+}
+.axis line,
+.axis path {
+  shape-rendering: crispEdges;
+  fill: transparent;
+  stroke: #555;
+}
+.axis text {
+  font-size: 11px;
+}
+.bar {
+  fill-opacity: 0.5;
+}
+.bar.left {
+  fill: steelblue;
+}
+.bar.right {
+  fill: firebrick;
+}
+#individualFiltering {
+  display: none;
+}
+th, td {
+  border: 1px solid;
+  border-collapse: collapse;
+  padding: 3px;
+}
+#coderLegend:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+#coderLegend {
+  border: 1px solid;
+  border-collapse: collapse;
+  padding: 3px;
+}
+</style>
+</head>
+<body>
+
+  <input checked type="radio" id="chartType1" name="chartType" value="groups" oninput="handleFiltering()">
+  <label for="chartType">User Groups</label><br>
+  <input type="radio" id="chartType2" name="chartType" value="individual" oninput="handleFiltering()">
+  <label for="chartType">Chance vs Observed</label><br>
+  <nobr>Select Date:&nbsp;&nbsp;2/27/2020</nobr><input id="dateinput" type="range" min="1" max="100" step="99" value="1" onchange="handleFiltering()"><nobr>3/13/2020</nobr>
+  <!-- <label for="start">Select date:</label>
+  <input type="date" id="date" name="date" value="2020-02-27" min="2020-02-27" max="2020-03-13" onchange="handleFiltering()"><br><br> -->
+  <div id="groupFiltering">
+    <br>
+    <label for="sorted1">Sorted by:</label>
+    <select name="sorted1" id="sortedInput" onchange="handleFiltering()">
+      <option value="0">None</option>
+      <option value="1">First User</option>
+      <option value="2">Second User</option>
+    </select><br><br>
+    <label for="commonUser">Select Common User:</label>
+    <select name="commonUser" id="commonUser" onchange="handleFiltering()">
+    </select>
+    <label for="group1Select">Select First User:</label>
+    <select name="group1Select" id="group1Select" onchange="handleFiltering()">
+    </select>
+    <label for="group2Select">Select Second User:</label>
+    <select name="group2Select" id="group2Select" onchange="handleFiltering()">
+    </select><br>
+    <input type="radio" id="chance" name="chanceOrObserved" value="chance" checked oninput="handleFiltering()">
+    <label for="chanceOrObserved">Chance</label><br>
+    <input type="radio" id="observed" name="chanceOrObserved" value="observed" oninput="handleFiltering()">
+    <label for="chanceOrObserved">Observed</label><br>
+    
+  </div>
+  <div id="individualFiltering">
+    <br>
+    <label for="sorted2">Sorted by:</label>
+    <select name="sorted2" id="sortedInput2" onchange="handleFiltering()">
+      <option value="0">None</option>
+      <option value="1">Chance</option>
+      <option value="2">Observed</option>
+    </select><br><br>
+    <label for="commonUser2">Select Common User:</label>
+    <select name="commonUser2" id="commonUser2" onchange="handleFiltering()">
+    </select><br>
+  </div>
+  <p id="coderLegend">Coder Legend</p>
+  <table id="coderTable">
+    <tbody></tbody>
+  </table>
+<script>
+
+  
+
+  let mockData = [];
+  let filtered = [];
+  let exampleData = [];
+  let selectedData1;
+  let selectedData2;
+  let emotionCodes = ["Anger / Frustration", "Anticipation / Hope", "Joy / Happiness", "trust", "Disturbed / Disgust", "Surprise", "Sadness", "Disgust", "No emotion", "Unknown", "Confused", "Touched / Moved", "Inspired", "Reflective", "Grateful", "Frustration", "Shame", "Satisfaction (Relief)", "Affection", "Dislike", "Enthusiasm", "Embarrassment", "Amused", "Attraction", "Like"]
+  let coderNames = {
+    "Andrea Figueroa":1,
+    "Meena M":3,
+    "Netra Pathak":4,
+    "tevn":5,
+    "Kush Tekriwal":6,
+    "Christina M Smith":7,
+    "Cecilia Aragon":8,
+    "Espen":10,
+    "Olga Khvan":11,
+    "Linda Wu":12,
+    "Niamh":13,
+    "Griffen Schwiesow":14,
+    "Mayur Gupta":15,
+    "Tiasha Datta":17,
+    "Miaoxin Wang":19,
+    "Belle":20,
+    "Zealer":21,
+    "Arthur Liu":23,
+    "Sourojit Ghosh":24,
+    "Ruoxi Shang":25,
+    "John Fowler":28,
+    "Wei Fan":29,
+    "Kulbir Singh":31,
+    "Aiyu Chen":32,
+    "Nathan Lee":33,
+    "Ethan Sylvia":34
+  }
+  function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+  }
+
+
+  fetch("mock-data.json") // get json data
+  .then((response) => response.json())
+  .then((data) => {
+    mockData = data;
+    for (let i = 0; i < mockData.length; i++) {
+      if (mockData[i].date === "2/27/2020") {
+        filtered = mockData[i];
+        break;
+      }
+    }
+    exampleData = filtered;
+    for (let i = 0; i < exampleData["userGroups"].length; i++) {
+      if (exampleData["userGroups"][i]["userGroup"].includes(17) && exampleData["userGroups"][i]["userGroup"].includes(10)) {
+        selectedData1 = exampleData["userGroups"][i];
+        break;
+      }
+    }
+    for (let i = 0; i < exampleData["userGroups"].length; i++) {
+      if (exampleData["userGroups"][i]["userGroup"].includes(15) && exampleData["userGroups"][i]["userGroup"].includes(10)) {
+        selectedData2 = exampleData["userGroups"][i];
+        break;
+      }
+    }
+    // let temp = [];
+    // for (let i = 0; i < selectedData1["emotions"].length; i++) {
+    //   temp.push(selectedData1["emotions"][i]["emotion_value"])
+    // }
+    // console.log(temp);
+  })
+  .catch((err) => {
+    //throw(err);
+  })
+  .finally(() => {
+    let coderNamesArr = Object.keys(coderNames);
+    let coderIdsArr = Object.values(coderNames);
+    let codersArrays = [coderNamesArr, coderIdsArr]
+    let coderTableElem = document.getElementById("coderTable");
+    coderTableElem.style.display = "none";
+    let columns = codersArrays[0].map(function(col, i) {
+      return codersArrays.map(function(row) {
+        return row[i];
+      });
+    });
+    columns.forEach(function(e) {
+      coderTableElem.innerHTML += '<tr><td>' + e[0] + '</td><td>' + e[1] + '</td></tr>'
+    })
+    let coderLegendElem = document.getElementById("coderLegend");
+    function toggleCoderTable() {
+      if (coderTableElem.style.display == "none") coderTableElem.style.display = "block";
+      else coderTableElem.style.display = "none"
+    }
+    coderLegendElem.addEventListener("click", toggleCoderTable)
+    let usersArr = [];
+    for (let i = 0; i < exampleData["userGroups"].length; i++) {
+      usersArr = usersArr.concat(exampleData["userGroups"][i]["userGroup"])
+    }
+    usersArr = usersArr.filter((item, pos) => usersArr.indexOf(item) === pos);
+    let commonUserSelectElem = document.getElementById("commonUser");
+    let commonUserSelectElem2 = document.getElementById("commonUser2");
+
+    for (let i = 0; i < usersArr.length; i++) {
+
+      let elem = document.createElement("option");
+      
+      elem.innerHTML = getKeyByValue(coderNames, usersArr[i]);
+      elem.value = usersArr[i];
+      elem.id = "commonUser" + usersArr[i];
+      commonUserSelectElem.appendChild(elem);
+      let elem2 = document.createElement("option");
+      elem2.innerHTML = getKeyByValue(coderNames, usersArr[i]);
+      elem2.value = usersArr[i];
+      elem2.id = "commonUser2-" + usersArr[i];
+      commonUserSelectElem2.appendChild(elem2);
+    }
+    let group1SelectElem = document.getElementById("group1Select");
+    for (let i = 0; i < usersArr.length; i++) {
+      let elem = document.createElement("option");
+      elem.innerHTML = getKeyByValue(coderNames, usersArr[i]);
+      elem.value = usersArr[i];
+      elem.id = "group1Select" + usersArr[i];
+      if (i == 1) elem.selected = "true";
+      group1SelectElem.appendChild(elem);
+    }
+    let group2SelectElem = document.getElementById("group2Select");
+    for (let i = 0; i < usersArr.length; i++) {
+      let elem = document.createElement("option");
+      elem.innerHTML = getKeyByValue(coderNames, usersArr[i]);
+      elem.value = usersArr[i];
+      elem.id = "group2Select" + usersArr[i];
+      if (i == 2) elem.selected = "true";
+      group2SelectElem.appendChild(elem);
+    }
+    // let individualGroupSelectElem = document.getElementById("individualGroup");
+    // for (let i = 0; i < usersArr.length; i++) {
+    //   let elem = document.createElement("option");
+    //   elem.innerHTML = usersArr[i];
+    //   elem.value = usersArr[i];
+    //   elem.id = "individualGroup" + usersArr[i];
+    //   individualGroupSelectElem.appendChild(elem);
+    // }
+    // let individualGroupSelect2Elem = document.getElementById("individualGroup2");
+    // for (let i = 0; i < usersArr.length; i++) {
+    //   let elem = document.createElement("option");
+    //   elem.innerHTML = usersArr[i];
+    //   elem.value = usersArr[i];
+    //   elem.id = "individualGroup2" + usersArr[i];
+    //   individualGroupSelect2Elem.appendChild(elem);
+    // }
+    // SET UP DIMENSIONS
+    var w = 500, // 500 default
+        h = 350; // 350 default
+    // margin.middle is distance from center line to each y-axis
+    var margin = {
+      top: 20,
+      right: 20,
+      bottom: 24,
+      left: 20,
+      middle: 50
+    };
+    // the width of each side of the chart
+    var regionWidth = w/2 - margin.middle;
+    // these are the x-coordinates of the y-axes
+    var pointA = regionWidth,
+        pointB = w - regionWidth;
+    // some contrived data
+
+    // CREATE SVG
+    var svg = d3.select('body').append('svg')
+      .attr('width', margin.left + w + margin.right)
+      .attr('height', margin.top + h + margin.bottom)
+      // ADD A GROUP FOR THE SPACE WITHIN THE MARGINS
+      .append('g')
+      .attr('transform', translation(margin.left, margin.top));
+      
+    // find the maximum data value on either side
+    //  since this will be shared by both of the x-axes
+    var maxValue = Math.max(
+      d3.max(selectedData1, function(d) { return (d.agreement1); }),
+      d3.max(exampleData, function(d) { return (d.agreement2); })
+    );
+    // SET UP SCALES
+    // the xScale goes from 0 to the width of a region
+    //  it will be reversed for the left x-axis
+    var xScale = d3.scale.linear()
+      .domain([0, maxValue])
+      .range([0, regionWidth])
+      .nice();
+    var xScaleLeft = d3.scale.linear()
+      .domain([0, maxValue])
+      .range([regionWidth, 0]);
+    var xScaleRight = d3.scale.linear()
+      .domain([0, maxValue])
+      .range([0, regionWidth]);
+    var yScale = d3.scale.ordinal()
+      .domain(emotionCodes)
+      .rangeRoundBands([h,0], 0.1);
+    // SET UP AXES
+    var yAxisLeft = d3.svg.axis()
+      .scale(yScale)
+      .orient('right')
+      .tickSize(4,0)
+      .tickPadding(margin.middle-4);
+    var yAxisRight = d3.svg.axis()
+      .scale(yScale)
+      .orient('left')
+      .tickSize(4,0)
+      .tickFormat('');
+    var xAxisRight = d3.svg.axis()
+      .scale(xScale)
+      .orient('bottom')
+    var xAxisLeft = d3.svg.axis()
+      // REVERSE THE X-AXIS SCALE ON THE LEFT SIDE BY REVERSING THE RANGE
+      .scale(xScale.copy().range([pointA, 0]))
+      .orient('bottom')
+    // MAKE GROUPS FOR EACH SIDE OF CHART
+    // scale(-1,1) is used to reverse the left side so the bars grow left instead of right
+    var leftBarGroup = svg.append('g')
+      .attr('transform', translation(pointA, 0) + 'scale(-1,1)');
+    var rightBarGroup = svg.append('g')
+      .attr('transform', translation(pointB, 0));
+    // DRAW AXES
+    svg.append('g')
+      .attr('class', 'axis y left')
+      .attr('transform', translation(pointA, 0))
+      .call(yAxisLeft)
+      .selectAll('text')
+      .style('text-anchor', 'middle');
+    svg.append('g')
+      .attr('class', 'axis y right')
+      .attr('transform', translation(pointB, 0))
+      .call(yAxisRight);
+    svg.append('g')
+      .attr('class', 'axis x left')
+      .attr('transform', translation(0, h))
+      .call(xAxisLeft);
+    svg.append('g')
+      .attr('class', 'axis x right')
+      .attr('transform', translation(pointB, h))
+      .call(xAxisRight);
+    
+    // DRAW BARS
+    leftBarGroup.selectAll('.bar.left')
+      .data(exampleData)
+      .enter().append('rect')
+        .attr('class', 'bar left')
+        .attr('x', 0)
+        .attr('y', function(d) { return yScale(d.emotion_id); })
+        .attr('width', function(d) { return xScale((d.agreement1)); })
+        .attr('height', yScale.rangeBand());
+    rightBarGroup.selectAll('.bar.right')
+      .data(exampleData)
+      .enter().append('rect')
+        .attr('class', 'bar right')
+        .attr('x', 0)
+        .attr('y', function(d) { return yScale(d.emotion_id); })
+        .attr('width', function(d) { return xScale((d.agreement2)); })
+        .attr('height', yScale.rangeBand());
+    // so sick of string concatenation for translations
+    function translation(x,y) {
+      return 'translate(' + x + ',' + y + ')';
+    }
+    svg.append("text")
+    .attr("class", "x label")
+    .attr("x", 215)
+    .attr("y", 370)
+    .text("Agreement");
+    svg.append("text")
+    .attr("class", "x label")
+    .attr("x", 203)
+    .text("Common User");
+    svg.append("text")
+    .attr("class", "x label")
+    .text("First User");
+    svg.append("text")
+    .attr("class", "x label")
+    .attr("x", 420)
+    .text("Second User");
+
+    document.querySelector('svg').setAttribute('id', 'svg1')
+  });
+
+function handleFiltering() {
+  
+  let chartTypeBool = document.getElementById("chartType2").checked;
+  let svgElems = document.querySelectorAll("svg");
+  if (!chartTypeBool) {
+    for (let i = 0; i < svgElems.length; i++) {
+      svgElems[i].remove();
+    }
+  }
+  if (chartTypeBool) {
+    document.getElementById("groupFiltering").style.display = "none";
+    document.getElementById("individualFiltering").style.display = "block";
+  } else {
+    document.getElementById("groupFiltering").style.display = "block";
+    document.getElementById("individualFiltering").style.display = "none";
+  }
+  let chanceOrObserved;
+  if (document.getElementById("chance").checked) {
+    chanceOrObserved = "chance";
+  } else chanceOrObserved = "observed";
+  // let dateInput = document.getElementById('date').value;
+  // let newDate = new Date(dateInput);
+  // newDate.setDate(newDate.getDate() + 1);
+  // dateInput = newDate.toLocaleDateString();
+  // for (let i = 0; i < mockData.length; i++) {
+  //   if (mockData[i].date === dateInput) {
+  //     filtered = mockData[i];
+  //     break;
+  //   }
+  // }
+  let dateInput = document.getElementById('dateinput').value;
+  let codedDate;
+  if (Number(dateInput) === 1) codedDate = "2/27/2020";
+  else codedDate = "3/13/2020";
+  for (let i = 0; i < mockData.length; i++) {
+    if (mockData[i].date === codedDate) {
+      filtered = mockData[i];
+      break;
+    }
+  }
+  exampleData = filtered;
+
+
+  for (let i = 0; i < document.querySelectorAll("option").length; i++) {
+      document.querySelectorAll("option")[i].disabled = false;
+    }
+
+  let commonUserInput = Number(document.getElementById("commonUser").value);
+  let selectedGroup1 = Number(document.getElementById("group1Select").value);
+  let selectedGroup2 = Number(document.getElementById("group2Select").value);
+  // if (commonUserInput.value != 0) {
+  //   document.getElementById("group1Select").disabled = false;
+  //   document.getElementById("group2Select").disabled = false;
+  // }
+  
+  document.getElementById("group1Select" + commonUserInput).disabled = true;
+  document.getElementById("group1Select" + selectedGroup2).disabled = true;
+  document.getElementById("group2Select" + commonUserInput).disabled = true;
+  document.getElementById("group2Select" + selectedGroup1).disabled = true;
+
+  for (let i = 0; i < exampleData["userGroups"].length; i++) {
+    if (exampleData["userGroups"][i]["userGroup"].includes(selectedGroup1) && exampleData["userGroups"][i]["userGroup"].includes(commonUserInput)) {
+      selectedData1 = exampleData["userGroups"][i];
+      break;
+    }
+  }
+  for (let i = 0; i < exampleData["userGroups"].length; i++) {
+    if (exampleData["userGroups"][i]["userGroup"].includes(selectedGroup2) && exampleData["userGroups"][i]["userGroup"].includes(commonUserInput)) {
+      selectedData2 = exampleData["userGroups"][i];
+      break;
+    }
+  }
+
+  let sortedInput = document.getElementById('sortedInput');
+  if (sortedInput.value != 0) {
+    if (sortedInput.value == 1) {
+      selectedData1["emotions"].sort(function(a,b) {
+        return parseFloat(a[chanceOrObserved]) - parseFloat(b[chanceOrObserved])
+      })
+      let emotionIdArr = [];
+      for (let i = 0; i < selectedData1["emotions"].length; i++) {
+        emotionIdArr.push(selectedData1["emotions"][i]["emotion_id"]);
+      }
+      selectedData2["emotions"].sort(function(a,b) {
+        return emotionIdArr.indexOf(a.emotion_id) - emotionIdArr.indexOf(b.emotion_id);
+      })
+    } else if (sortedInput.value == 2) {
+      selectedData2["emotions"].sort(function(a,b) {
+        return parseFloat(a[chanceOrObserved]) - parseFloat(b[chanceOrObserved])
+      })
+      let emotionIdArr = [];
+      for (let i = 0; i < selectedData2["emotions"].length; i++) {
+        emotionIdArr.push(selectedData2["emotions"][i]["emotion_id"]);
+      }
+      selectedData1["emotions"].sort(function(a,b) {
+        return emotionIdArr.indexOf(a.emotion_id) - emotionIdArr.indexOf(b.emotion_id);
+      })
+    }
+  } else {
+    selectedData1["emotions"].sort(function(a, b) {
+      return parseFloat(a.emotion_id) - parseFloat(b.emotion_id);
+    })
+    
+    selectedData2["emotions"].sort(function(a, b) {
+      return parseFloat(a.emotion_id) - parseFloat(b.emotion_id);
+    })
+  }
+  let individualGroup1Val, individualGroup2Val;
+  let commonUserArr = [];
+  if (chartTypeBool) {
+
+
+    
+
+    // individualGroup1Val = Number(document.getElementById("individualGroup").value);
+    // individualGroup2Val = Number(document.getElementById("individualGroup2").value);
+    // document.getElementById("individualGroup2" + individualGroup1Val).disabled = true;
+    // for (let i = 0; i < exampleData["userGroups"].length; i++) {
+    //   if (exampleData["userGroups"][i]["userGroup"].includes(individualGroup1Val) && exampleData["userGroups"][i]["userGroup"].includes(individualGroup2Val)) {
+    //     selectedData1 = exampleData["userGroups"][i];
+    //     break;
+    //   }
+    // }
+    // if (sortedInput = document.getElementById("sortedInput2").value != 0) {
+    //   if (sortedInput = document.getElementById("sortedInput2").value == 1) {
+    //     selectedData1["emotions"].sort(function(a, b) {
+    //       return parseFloat(a.chance) - parseFloat(b.chance);
+    //   })
+    //   }
+    //    else {
+    //     selectedData1["emotions"].sort(function(a, b) {
+    //       return parseFloat(a.observed) - parseFloat(b.observed);
+    //   })
+    //   }
+    // } else {
+    //   selectedData1["emotions"].sort(function(a, b) {
+    //     return parseFloat(a.emotion_id) - parseFloat(b.emotion_id);
+    //   })
+    // }
+
+
+  }
+
+    // SET UP DIMENSIONS
+    var w = 500,
+    h = 350;
+    // margin.middle is distance from center line to each y-axis
+    var margin = {
+      top: 20,
+      right: 20,
+      bottom: 24,
+      left: 20,
+      middle: 50
+    };
+    // the width of each side of the chart
+    var regionWidth = w/2 - margin.middle;
+    // these are the x-coordinates of the y-axes
+    var pointA = regionWidth,
+        pointB = w - regionWidth;
+
+    // CREATE SVG
+    var svg = d3.select('body').append('svg')
+      .attr('width', margin.left + w + margin.right)
+      .attr('height', margin.top + h + margin.bottom)
+      // ADD A GROUP FOR THE SPACE WITHIN THE MARGINS
+      .append('g')
+      .attr('transform', translation(margin.left, margin.top));
+      
+    // find the maximum data value on either side
+    //  since this will be shared by both of the x-axes
+    var maxValue;
+    if (chartTypeBool) {
+      maxValue = Math.max(
+      d3.max(selectedData1["emotions"], function(d) { return (d["chance"]); }),
+      d3.max(selectedData1["emotions"], function(d) { return (d["observed"]); })
+      );
+    } else {
+      maxValue = Math.max(
+      d3.max(selectedData1["emotions"], function(d) { return (d[chanceOrObserved]); }),
+      d3.max(selectedData2["emotions"], function(d) { return (d[chanceOrObserved]); })
+      );
+    }
+
+    // SET UP SCALES
+    // the xScale goes from 0 to the width of a region
+    //  it will be reversed for the left x-axis
+    var xScale = d3.scale.linear()
+      .domain([0, maxValue])
+      .range([0, regionWidth])
+      .nice();
+    var xScaleLeft = d3.scale.linear()
+      .domain([0, maxValue])
+      .range([regionWidth, 0]);
+    var xScaleRight = d3.scale.linear()
+      .domain([0, maxValue])
+      .range([0, regionWidth]);
+    let temp = [];
+    for (let i = 0; i < selectedData1["emotions"].length; i++) {
+      temp.push(selectedData1["emotions"][i]["emotion_value"])
+    }
+    var yScale = d3.scale.ordinal()
+      .domain(temp)
+      .rangeRoundBands([h,0], 0.1);
+    // SET UP AXES
+    var yAxisLeft = d3.svg.axis()
+      .scale(yScale)
+      .orient('right')
+      .tickSize(4,0)
+      .tickPadding(margin.middle-4);
+    var yAxisRight = d3.svg.axis()
+      .scale(yScale)
+      .orient('left')
+      .tickSize(4,0)
+      .tickFormat('');
+    var xAxisRight = d3.svg.axis()
+      .scale(xScale)
+      .orient('bottom')
+    var xAxisLeft = d3.svg.axis()
+      // REVERSE THE X-AXIS SCALE ON THE LEFT SIDE BY REVERSING THE RANGE
+      .scale(xScale.copy().range([pointA, 0]))
+      .orient('bottom')
+    // MAKE GROUPS FOR EACH SIDE OF CHART
+    // scale(-1,1) is used to reverse the left side so the bars grow left instead of right
+    var leftBarGroup = svg.append('g')
+      .attr('transform', translation(pointA, 0) + 'scale(-1,1)');
+    var rightBarGroup = svg.append('g')
+      .attr('transform', translation(pointB, 0));
+    // DRAW AXES
+    svg.append('g')
+      .attr('class', 'axis y left')
+      .attr('transform', translation(pointA, 0))
+      .call(yAxisLeft)
+      .selectAll('text')
+      .style('text-anchor', 'middle');
+    svg.append('g')
+      .attr('class', 'axis y right')
+      .attr('transform', translation(pointB, 0))
+      .call(yAxisRight);
+    svg.append('g')
+      .attr('class', 'axis x left')
+      .attr('transform', translation(0, h))
+      .call(xAxisLeft);
+    svg.append('g')
+      .attr('class', 'axis x right')
+      .attr('transform', translation(pointB, h))
+      .call(xAxisRight);
+    
+    // DRAW BARS
+    if (chartTypeBool) {
+      leftBarGroup.selectAll('.bar.left')
+      .data(selectedData1["emotions"])
+      .enter().append('rect')
+        .attr('class', 'bar left')
+        .attr('x', 0)
+        .attr('y', function(d) { return yScale(d["emotion_value"]); })
+        // .attr('y', function(d) { return yScale("trust"); })
+        .attr('width', function(d) { return xScale((d["chance"])); })
+        // .attr('width', function(d) { return xScale(0.5); })
+        .attr('height', yScale.rangeBand());
+    rightBarGroup.selectAll('.bar.right')
+      .data(selectedData1["emotions"])
+      .enter().append('rect')
+        .attr('class', 'bar right')
+        .attr('x', 0)
+        .attr('y', function(d) { return yScale(d["emotion_value"]); })
+        .attr('width', function(d) { return xScale((d["observed"])); })
+        .attr('height', yScale.rangeBand());
+    } else {
+      leftBarGroup.selectAll('.bar.left')
+      .data(selectedData1["emotions"])
+      .enter().append('rect')
+        .attr('class', 'bar left')
+        .attr('x', 0)
+        .attr('y', function(d) { return yScale(d["emotion_value"]); })
+        // .attr('y', function(d) { return yScale("trust"); })
+        .attr('width', function(d) { return xScale((d[chanceOrObserved])); })
+        // .attr('width', function(d) { return xScale(0.5); })
+        .attr('height', yScale.rangeBand());
+    rightBarGroup.selectAll('.bar.right')
+      .data(selectedData2["emotions"])
+      .enter().append('rect')
+        .attr('class', 'bar right')
+        .attr('x', 0)
+        .attr('y', function(d) { return yScale(d["emotion_value"]); })
+        .attr('width', function(d) { return xScale((d[chanceOrObserved])); })
+        .attr('height', yScale.rangeBand());
+    }
+
+    // so sick of string concatenation for translations
+    function translation(x,y) {
+      return 'translate(' + x + ',' + y + ')';
+    }
+    svg.append("text")
+    .attr("class", "x label")
+    .attr("x", 215)
+    .attr("y", 370)
+    .text("Agreement");
+    svg.append("text")
+    .attr("class", "x label")
+    .attr("y", 0)
+    .text(getKeyByValue(coderNames, Number(selectedGroup1)));
+    svg.append("text")
+    .attr("class", "x label")
+    .attr("x", 500)
+    .attr("y", 0)
+    .attr("text-anchor", "end")
+    .text(getKeyByValue(coderNames, Number(selectedGroup2)));
+    svg.append("text")
+    .attr("class", "x label")
+    .attr("x", 250)
+    .attr("y", 0)
+    .attr("text-anchor", "middle")
+    .text(getKeyByValue(coderNames, Number(commonUserInput)));
+
+    
+  document.querySelector('svg').setAttribute('id', 'svg1')
+
+  if (chartTypeBool) {
+
+    let svgElems = document.querySelectorAll("svg");
+    for (let i = 0; i < svgElems.length; i++) {
+        svgElems[i].remove();
+    }
+    let selectedCommonUserVal = Number(document.getElementById("commonUser2").value);
+    for (let i = 0; i < exampleData["userGroups"].length; i++) {
+      if (exampleData["userGroups"][i]["userGroup"].includes(selectedCommonUserVal)) {
+        commonUserArr.push(exampleData["userGroups"][i]);
+      }
+    }
+
+
+
+    for (let i = 0; i < commonUserArr.length; i++) {
+        if (document.getElementById("sortedInput2").value != 0) {
+          if (document.getElementById("sortedInput2").value == 1) {
+            commonUserArr[i]["emotions"].sort(function(a, b) {
+              return parseFloat(a.chance) - parseFloat(b.chance);
+          })
+          //console.log(commonUserArr[i]["emotions"]);
+          }
+          else {
+            commonUserArr[i]["emotions"].sort(function(a, b) {
+              return parseFloat(a.observed) - parseFloat(b.observed);
+          })
+          }
+      } else {
+        commonUserArr[i]["emotions"].sort(function(a, b) {
+          return parseFloat(a.emotion_id) - parseFloat(b.emotion_id);
+        })
+      }
+
+      // CREATE SVG
+      var svg = d3.select('body').append('svg')
+        .attr('width', margin.left + w + margin.right)
+        .attr('height', margin.top + h + margin.bottom)
+        // ADD A GROUP FOR THE SPACE WITHIN THE MARGINS
+        .append('g')
+        .attr('transform', translation(margin.left, margin.top));
+        
+      // find the maximum data value on either side
+      //  since this will be shared by both of the x-axes
+      var maxValue;
+
+      maxValue = Math.max(
+      d3.max(selectedData1["emotions"], function(d) { return (d["chance"]); }),
+      d3.max(selectedData1["emotions"], function(d) { return (d["observed"]); })
+      );
+
+      // SET UP SCALES
+      // the xScale goes from 0 to the width of a region
+      //  it will be reversed for the left x-axis
+      var xScale = d3.scale.linear()
+        .domain([0, maxValue])
+        .range([0, regionWidth])
+        .nice();
+      var xScaleLeft = d3.scale.linear()
+        .domain([0, maxValue])
+        .range([regionWidth, 0]);
+      var xScaleRight = d3.scale.linear()
+        .domain([0, maxValue])
+        .range([0, regionWidth]);
+      let temp = [];
+      //console.log(commonUserArr[i]["emotions"][i]["emotion_value"])
+      for (let j = 0; j < commonUserArr[i]["emotions"].length; j++) {
+        temp.push(commonUserArr[i]["emotions"][j]["emotion_value"])
+      }
+      var yScale = d3.scale.ordinal()
+        .domain(temp)
+        .rangeRoundBands([h,0], 0.1);
+      // SET UP AXES
+      var yAxisLeft = d3.svg.axis()
+        .scale(yScale)
+        .orient('right')
+        .tickSize(4,0)
+        .tickPadding(margin.middle-4);
+      var yAxisRight = d3.svg.axis()
+        .scale(yScale)
+        .orient('left')
+        .tickSize(4,0)
+        .tickFormat('');
+      var xAxisRight = d3.svg.axis()
+        .scale(xScale)
+        .orient('bottom')
+      var xAxisLeft = d3.svg.axis()
+        // REVERSE THE X-AXIS SCALE ON THE LEFT SIDE BY REVERSING THE RANGE
+        .scale(xScale.copy().range([pointA, 0]))
+        .orient('bottom')
+      // MAKE GROUPS FOR EACH SIDE OF CHART
+      // scale(-1,1) is used to reverse the left side so the bars grow left instead of right
+      var leftBarGroup = svg.append('g')
+        .attr('transform', translation(pointA, 0) + 'scale(-1,1)');
+      var rightBarGroup = svg.append('g')
+        .attr('transform', translation(pointB, 0));
+      // DRAW AXES
+      svg.append('g')
+        .attr('class', 'axis y left')
+        .attr('transform', translation(pointA, 0))
+        .call(yAxisLeft)
+        .selectAll('text')
+        .style('text-anchor', 'middle');
+      svg.append('g')
+        .attr('class', 'axis y right')
+        .attr('transform', translation(pointB, 0))
+        .call(yAxisRight);
+      svg.append('g')
+        .attr('class', 'axis x left')
+        .attr('transform', translation(0, h))
+        .call(xAxisLeft);
+      svg.append('g')
+        .attr('class', 'axis x right')
+        .attr('transform', translation(pointB, h))
+        .call(xAxisRight);
+      
+      // DRAW BARS
+      leftBarGroup.selectAll('.bar.left')
+      .data(commonUserArr[i]["emotions"])
+      .enter().append('rect')
+        .attr('class', 'bar left')
+        .attr('x', 0)
+        .attr('y', function(d) { return yScale(d["emotion_value"]); })
+        // .attr('y', function(d) { return yScale("trust"); })
+        .attr('width', function(d) { return xScale((d["chance"])); })
+        // .attr('width', function(d) { return xScale(0.5); })
+        .attr('height', yScale.rangeBand());
+      rightBarGroup.selectAll('.bar.right')
+      .data(commonUserArr[i]["emotions"])
+      .enter().append('rect')
+        .attr('class', 'bar right')
+        .attr('x', 0)
+        .attr('y', function(d) { return yScale(d["emotion_value"]); })
+        .attr('width', function(d) { return xScale((d["observed"])); })
+        .attr('height', yScale.rangeBand());
+
+      // so sick of string concatenation for translations
+      function translation(x,y) {
+        return 'translate(' + x + ',' + y + ')';
+      }
+      svg.append("text")
+      .attr("class", "x label")
+      .attr("x", 215)
+      .attr("y", 370)
+      .text("Agreement");
+      svg.append("text")
+      .attr("class", "x label")
+      .attr("y", 345)
+      .text("Chance");
+      svg.append("text")
+      .attr("class", "x label")
+      .attr("x", 440)
+      .attr("y", 345)
+      .text("Observed");
+      svg.append("text")
+      .attr("class", "x label")
+      .attr("x", 255)
+      .attr("y", 0)
+      .attr("text-anchor", "middle")
+      .text(getKeyByValue(coderNames, Number(commonUserArr[i]["userGroup"][0])) + " & " + getKeyByValue(coderNames, Number(commonUserArr[i]["userGroup"][1])));
+    
+      document.querySelector("body").append(svg);
+    }
+  }
+
+  // let svg2 = document.getElementById('svg1').cloneNode(true);
+  // document.querySelector("body").append(svg2);
+}
+
+
+</script>
+</body>
+</html>
