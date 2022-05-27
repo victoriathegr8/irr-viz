@@ -1,0 +1,466 @@
+<html>
+<head>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<style>
+svg {
+  border: 1px solid #ccc;
+}
+.axis line,
+.axis path {
+  shape-rendering: crispEdges;
+  fill: transparent;
+  stroke: #555;
+}
+.axis text {
+  font-size: 11px;
+}
+.bar {
+  fill-opacity: 0.5;
+}
+.bar.left {
+  fill: steelblue;
+}
+.bar.right {
+  fill: firebrick;
+}
+th, td {
+  border: 1px solid;
+  border-collapse: collapse;
+  padding: 3px;
+}
+#coderLegend:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+#coderLegend {
+  border: 1px solid;
+  border-collapse: collapse;
+  padding: 3px;
+}
+#svgArea {
+    display: inline-flex;
+}
+#coderTable {
+    display: inline-block;
+}
+
+</style>
+</head>
+<body>
+    <select id="emotionSelector" oninput="handleFiltering()">
+    </select>
+    <br><br>
+    <!-- <nobr>Select Date:&nbsp;&nbsp;2/27/2020</nobr><input id="dateinput" type="range" min="1" max="100" step="99" value="1" onchange="handleFiltering()"><nobr>3/13/2020</nobr> -->
+    <br>
+    <label for="sortedInput">Sorted By:</label>
+    <select id="sortedInput" name="sortedInput" oninput="handleFiltering()">
+        <option value="0">None</option>
+        <option value="1">Chance</option>
+        <option value="2">Observed</option>
+    </select>
+    <br><br>
+    <div id="svgArea"></div>
+    <!-- <p id="coderLegend">Coder Legend</p> -->
+    <table id="coderTable">
+      <tbody></tbody>
+    </table>
+    <br>
+<script>
+    let mockData = [];
+    let filtered = [];
+    let filtered2 = [];
+    let userGroups = [];
+    let exampleData = [];
+    let uniqueUsers = [];
+    let emotionCodes = ["Anger / Frustration", "Anticipation / Hope", "Joy / Happiness", "trust", "Disturbed / Disgust", "Surprise", "Sadness", "Disgust", "No emotion", "Unknown", "Confused", "Touched / Moved", "Inspired", "Reflective", "Grateful", "Frustration", "Shame", "Satisfaction (Relief)", "Affection", "Dislike", "Enthusiasm", "Embarrassment", "Amused", "Attraction", "Like"]
+    let coderNames = {
+        "Andrea Figueroa":1,
+        "Meena M":3,
+        "Netra Pathak":4,
+        "tevn":5,
+        "Kush Tekriwal":6,
+        "Christina M Smith":7,
+        "Cecilia Aragon":8,
+        "Espen":10,
+        "Olga Khvan":11,
+        "Linda Wu":12,
+        "Niamh":13,
+        "Griffen Schwiesow":14,
+        "Mayur Gupta":15,
+        "Tiasha Datta":17,
+        "Miaoxin Wang":19,
+        "Belle":20,
+        "Zealer":21,
+        "Arthur Liu":23,
+        "Sourojit Ghosh":24,
+        "Ruoxi Shang":25,
+        "John Fowler":28,
+        "Wei Fan":29,
+        "Kulbir Singh":31,
+        "Aiyu Chen":32,
+        "Nathan Lee":33,
+        "Ethan Sylvia":34
+    }
+    function getKeyByValue(object, value) {
+        return Object.keys(object).find(key => object[key] === value);
+    }
+    let selectEmotionElem = document.getElementById("emotionSelector");
+    for (let i = 0; i < emotionCodes.length; i++) {
+        let elem = document.createElement("option");
+        elem.innerHTML = emotionCodes[i];
+        elem.value = emotionCodes[i];
+        selectEmotionElem.appendChild(elem);
+    }
+    let coderLegendElem = document.getElementById("coderLegend");
+    function toggleCoderTable() {
+      if (coderTableElem.style.display == "none") coderTableElem.style.display = "block";
+      else coderTableElem.style.display = "none"
+    }
+    //coderLegendElem.addEventListener("click", toggleCoderTable)
+
+    fetch("mock-data.json") // get json data
+    .then((response) => response.json())
+    .then((data) => {
+        mockData = data;
+        for (let i = 0; i < mockData.length; i++) {
+            if (mockData[i].date === "3/13/2020") {
+                filtered = mockData[i];
+                break;
+            }
+        }
+        for (let i = 0; i < filtered["userGroups"].length; i++) {
+            for (let j = 0; j < filtered["userGroups"][0]["emotions"].length; j++) {
+                if (filtered["userGroups"][i]["emotions"][j]["emotion_value"] === "Anger / Frustration") {
+                    filtered2.push(filtered["userGroups"][i]["emotions"][j]);
+                    userGroups.push(filtered["userGroups"][i]["userGroup"])
+                }
+            }
+        }
+        // for (let i = 0; i < userGroups.length; i++) {
+        //     userGroups[i] = getKeyByValue(coderNames, Number(userGroups[i][0])) + " & " + getKeyByValue(coderNames, Number(userGroups[i][1]));
+        // }
+        for (let i = 0; i < userGroups.length; i++) {
+            uniqueUsers.push((userGroups[i][0]));
+            uniqueUsers.push((userGroups[i][1]));
+            userGroups[i] = userGroups[i][0] + " & " + userGroups[i][1];
+        }
+        uniqueUsers = [...new Set(uniqueUsers)];
+        uniqueUsers = uniqueUsers.sort(function(a, b){return a - b});
+        console.log(uniqueUsers);
+        let uniqueUsersNames = uniqueUsers.map(x => getKeyByValue(coderNames, x))
+        console.log(uniqueUsersNames);
+
+        let codersArrays = [uniqueUsersNames, uniqueUsers]
+        let coderTableElem = document.getElementById("coderTable");
+        let columns = codersArrays[0].map(function(col, i) {
+        return codersArrays.map(function(row) {
+            return row[i];
+        });
+        });
+        columns.forEach(function(e) {
+        coderTableElem.innerHTML += '<tr><td>' + e[0] + '</td><td>' + e[1] + '</td></tr>'
+        })
+
+        for (let i = 0; i < filtered2.length; i++) {
+            filtered2[i]["userGroup"] = userGroups[i];
+        }
+        exampleData = filtered2;
+
+         // SET UP DIMENSIONS
+        var w = 500,
+            h = 300;
+        // margin.middle is distance from center line to each y-axis
+        var margin = {
+        top: 20,
+        right: 20,
+        bottom: 24,
+        left: 20,
+        middle: 28
+        };
+        // the width of each side of the chart
+        var regionWidth = w/2 - margin.middle;
+        // these are the x-coordinates of the y-axes
+        var pointA = regionWidth,
+            pointB = w - regionWidth;
+
+        // GET THE TOTAL POPULATION SIZE AND CREATE A FUNCTION FOR RETURNING THE PERCENTAGE
+        var totalPopulation = d3.sum(exampleData, function(d) { return d.chance + d.observed; }),
+            percentage = function(d) { return d / totalPopulation; };
+        // CREATE SVG
+        var svg = d3.select('#svgArea').append('svg')
+        .attr('width', margin.left + w + margin.right)
+        .attr('height', margin.top + h + margin.bottom)
+        // ADD A GROUP FOR THE SPACE WITHIN THE MARGINS
+        .append('g')
+            .attr('transform', translation(margin.left, margin.top));
+        // find the maximum data value on either side
+        //  since this will be shared by both of the x-axes
+        // var maxValue = Math.max(
+        // d3.max(exampleData, function(d) { return (d.chance); }),
+        // d3.max(exampleData, function(d) { return (d.observed); })
+        // );
+        let maxValue = 1;
+        // SET UP SCALES
+        // the xScale goes from 0 to the width of a region
+        //  it will be reversed for the left x-axis
+        var xScale = d3.scale.linear()
+        .domain([0, maxValue])
+        .range([0, regionWidth])
+        .nice();
+        var xScaleLeft = d3.scale.linear()
+        .domain([0, maxValue])
+        .range([regionWidth, 0]);
+        var xScaleRight = d3.scale.linear()
+        .domain([0, maxValue])
+        .range([0, regionWidth]);
+        var yScale = d3.scale.ordinal()
+        .domain(exampleData.map(function(d) { return d.userGroup; }))
+        .rangeRoundBands([h,0], 0.1);
+        // SET UP AXES
+        var yAxisLeft = d3.svg.axis()
+            .scale(yScale)
+            .orient('right')
+            .tickSize(4,0)
+            .tickPadding(margin.middle-4);
+        var yAxisRight = d3.svg.axis()
+            .scale(yScale)
+            .orient('left')
+            .tickSize(4,0)
+            .tickFormat('');
+        var xAxisRight = d3.svg.axis()
+        .scale(xScale)
+        .orient('bottom')
+        var xAxisLeft = d3.svg.axis()
+        // REVERSE THE X-AXIS SCALE ON THE LEFT SIDE BY REVERSING THE RANGE
+        .scale(xScale.copy().range([pointA, 0]))
+        .orient('bottom')
+        // MAKE GROUPS FOR EACH SIDE OF CHART
+        // scale(-1,1) is used to reverse the left side so the bars grow left instead of right
+        var leftBarGroup = svg.append('g')
+        .attr('transform', translation(pointA, 0) + 'scale(-1,1)');
+        var rightBarGroup = svg.append('g')
+        .attr('transform', translation(pointB, 0));
+        // DRAW AXES
+        svg.append('g')
+            .attr('class', 'axis y left')
+            .attr('transform', translation(pointA, 0))
+            .call(yAxisLeft)
+            .selectAll('text')
+        .style('text-anchor', 'middle');
+        svg.append('g')
+            .attr('class', 'axis y right')
+            .attr('transform', translation(pointB, 0))
+            .call(yAxisRight);
+        svg.append('g')
+            .attr('class', 'axis x left')
+            .attr('transform', translation(0, h))
+            .call(xAxisLeft);
+        svg.append('g')
+            .attr('class', 'axis x right')
+            .attr('transform', translation(pointB, h))
+            .call(xAxisRight);
+        // DRAW BARS
+        leftBarGroup.selectAll('.bar.left')
+        .data(exampleData)
+        .enter().append('rect')
+            .attr('class', 'bar left')
+            .attr('x', 0)
+            .attr('y', function(d) { return yScale(d.userGroup); })
+            .attr('width', function(d) { return xScale((d.chance)); })
+            .attr('height', yScale.rangeBand());
+        rightBarGroup.selectAll('.bar.right')
+        .data(exampleData)
+        .enter().append('rect')
+            .attr('class', 'bar right')
+            .attr('x', 0)
+            .attr('y', function(d) { return yScale(d.userGroup); })
+            .attr('width', function(d) { return xScale((d.observed)); })
+            .attr('height', yScale.rangeBand());
+        svg.append("text")
+            .attr("class", "x label")
+            .attr("y", 0)
+            .text("Chance");
+        svg.append("text")
+            .attr("class", "x label")
+            .attr("x", 440)
+            .attr("y", 0)
+            .text("Observed");
+        svg.append("text")
+            .attr("class", "x label")
+            .attr("x", 233)
+            .attr("y", 0)
+            .text("Users");
+        // so sick of string concatenation for translations
+        function translation(x,y) {
+            return 'translate(' + x + ',' + y + ')';
+        }
+    })
+    function handleFiltering() {
+        document.querySelector("svg").remove();
+        filtered2 = [];
+        userGroups = [];
+        for (let i = 0; i < filtered["userGroups"].length; i++) {
+            for (let j = 0; j < filtered["userGroups"][0]["emotions"].length; j++) {
+                if (filtered["userGroups"][i]["emotions"][j]["emotion_value"] === selectEmotionElem.value) {
+                    filtered2.push(filtered["userGroups"][i]["emotions"][j]);
+                    userGroups.push(filtered["userGroups"][i]["userGroup"])
+                }
+            }
+        }
+        
+        for (let i = 0; i < userGroups.length; i++) {
+            userGroups[i] = userGroups[i][0] + " & " + userGroups[i][1];
+        }
+        for (let i = 0; i < filtered2.length; i++) {
+            filtered2[i]["userGroup"] = userGroups[i];
+        }
+        exampleData = filtered2;
+
+        let sortedInput = document.getElementById('sortedInput');
+        if (sortedInput.value != 0) {
+            if (sortedInput.value == 1) {
+                exampleData.sort(function(a,b) {
+                    return parseFloat(a.chance) - parseFloat(b.chance)
+                })
+            } else if (sortedInput.value == 2) {
+                exampleData.sort(function(a,b) {
+                    return parseFloat(a.observed) - parseFloat(b.observed)
+                })
+            }
+        } else {
+            exampleData.sort(function(a, b) {
+            return parseFloat(a.userGroup) - parseFloat(b.userGroup);
+            })
+        }
+
+        // SET UP DIMENSIONS
+        var w = 500,
+            h = 300;
+        // margin.middle is distance from center line to each y-axis
+        var margin = {
+        top: 20,
+        right: 20,
+        bottom: 24,
+        left: 20,
+        middle: 28
+        };
+        // the width of each side of the chart
+        var regionWidth = w/2 - margin.middle;
+        // these are the x-coordinates of the y-axes
+        var pointA = regionWidth,
+            pointB = w - regionWidth;
+
+        // GET THE TOTAL POPULATION SIZE AND CREATE A FUNCTION FOR RETURNING THE PERCENTAGE
+        var totalPopulation = d3.sum(exampleData, function(d) { return d.chance + d.observed; }),
+            percentage = function(d) { return d / totalPopulation; };
+        // CREATE SVG
+        var svg = d3.select('#svgArea').append('svg')
+        .attr('width', margin.left + w + margin.right)
+        .attr('height', margin.top + h + margin.bottom)
+        // ADD A GROUP FOR THE SPACE WITHIN THE MARGINS
+        .append('g')
+            .attr('transform', translation(margin.left, margin.top));
+        // find the maximum data value on either side
+        //  since this will be shared by both of the x-axes
+        // var maxValue = Math.max(
+        // d3.max(exampleData, function(d) { return (d.chance); }),
+        // d3.max(exampleData, function(d) { return (d.observed); })
+        // );
+        let maxValue = 1;
+        // SET UP SCALES
+        // the xScale goes from 0 to the width of a region
+        //  it will be reversed for the left x-axis
+        var xScale = d3.scale.linear()
+        .domain([0, maxValue])
+        .range([0, regionWidth])
+        .nice();
+        var xScaleLeft = d3.scale.linear()
+        .domain([0, maxValue])
+        .range([regionWidth, 0]);
+        var xScaleRight = d3.scale.linear()
+        .domain([0, maxValue])
+        .range([0, regionWidth]);
+        var yScale = d3.scale.ordinal()
+        .domain(exampleData.map(function(d) { return d.userGroup; }))
+        .rangeRoundBands([h,0], 0.1);
+        // SET UP AXES
+        var yAxisLeft = d3.svg.axis()
+            .scale(yScale)
+            .orient('right')
+            .tickSize(4,0)
+            .tickPadding(margin.middle-4);
+        var yAxisRight = d3.svg.axis()
+            .scale(yScale)
+            .orient('left')
+            .tickSize(4,0)
+            .tickFormat('');
+        var xAxisRight = d3.svg.axis()
+        .scale(xScale)
+        .orient('bottom')
+        var xAxisLeft = d3.svg.axis()
+        // REVERSE THE X-AXIS SCALE ON THE LEFT SIDE BY REVERSING THE RANGE
+        .scale(xScale.copy().range([pointA, 0]))
+        .orient('bottom')
+        // MAKE GROUPS FOR EACH SIDE OF CHART
+        // scale(-1,1) is used to reverse the left side so the bars grow left instead of right
+        var leftBarGroup = svg.append('g')
+        .attr('transform', translation(pointA, 0) + 'scale(-1,1)');
+        var rightBarGroup = svg.append('g')
+        .attr('transform', translation(pointB, 0));
+        // DRAW AXES
+        svg.append('g')
+            .attr('class', 'axis y left')
+            .attr('transform', translation(pointA, 0))
+            .call(yAxisLeft)
+            .selectAll('text')
+        .style('text-anchor', 'middle');
+        svg.append('g')
+            .attr('class', 'axis y right')
+            .attr('transform', translation(pointB, 0))
+            .call(yAxisRight);
+        svg.append('g')
+            .attr('class', 'axis x left')
+            .attr('transform', translation(0, h))
+            .call(xAxisLeft);
+        svg.append('g')
+            .attr('class', 'axis x right')
+            .attr('transform', translation(pointB, h))
+            .call(xAxisRight);
+        // DRAW BARS
+        leftBarGroup.selectAll('.bar.left')
+        .data(exampleData)
+        .enter().append('rect')
+            .attr('class', 'bar left')
+            .attr('x', 0)
+            .attr('y', function(d) { return yScale(d.userGroup); })
+            .attr('width', function(d) { return xScale((d.chance)); })
+            .attr('height', yScale.rangeBand());
+        rightBarGroup.selectAll('.bar.right')
+        .data(exampleData)
+        .enter().append('rect')
+            .attr('class', 'bar right')
+            .attr('x', 0)
+            .attr('y', function(d) { return yScale(d.userGroup); })
+            .attr('width', function(d) { return xScale((d.observed)); })
+            .attr('height', yScale.rangeBand());
+        svg.append("text")
+            .attr("class", "x label")
+            .attr("y", 0)
+            .text("Chance");
+        svg.append("text")
+            .attr("class", "x label")
+            .attr("x", 440)
+            .attr("y", 0)
+            .text("Observed");
+        svg.append("text")
+            .attr("class", "x label")
+            .attr("x", 233)
+            .attr("y", 0)
+            .text("Users");
+        function translation(x,y) {
+            return 'translate(' + x + ',' + y + ')';
+        }
+    }
+</script>
+</body>
+</html>

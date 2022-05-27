@@ -1,0 +1,1836 @@
+[
+  {
+      "date": "3/13/2020",
+      "userGroups": [
+          {
+              "userGroup": [
+                  10,
+                  17
+              ],
+              "emotions": [
+                  {
+                      "emotion_id": 1,
+                      "emotion_value": "Anger / Frustration",
+                      "chance": 0.125770065,
+                      "observed": 0.223595691
+                  },
+                  {
+                      "emotion_id": 2,
+                      "emotion_value": "Anticipation / Hope",
+                      "chance": 0.776904938,
+                      "observed": 0.950147572
+                  },
+                  {
+                      "emotion_id": 3,
+                      "emotion_value": "Joy / Happiness",
+                      "chance": 0.509374776,
+                      "observed": 0.963911787
+                  },
+                  {
+                      "emotion_id": 4,
+                      "emotion_value": "trust",
+                      "chance": 0.467839875,
+                      "observed": 0.413978533
+                  },
+                  {
+                      "emotion_id": 5,
+                      "emotion_value": "Disturbed / Disgust",
+                      "chance": 0.920744276,
+                      "observed": 0.365603239
+                  },
+                  {
+                      "emotion_id": 6,
+                      "emotion_value": "Surprise",
+                      "chance": 0.146190928,
+                      "observed": 0.156935064
+                  },
+                  {
+                      "emotion_id": 7,
+                      "emotion_value": "Sadness",
+                      "chance": 0.622191879,
+                      "observed": 0.218881556
+                  },
+                  {
+                      "emotion_id": 8,
+                      "emotion_value": "Disgust",
+                      "chance": 0.689932318,
+                      "observed": 0.319602056
+                  },
+                  {
+                      "emotion_id": 9,
+                      "emotion_value": "No emotion",
+                      "chance": 0.141305271,
+                      "observed": 0.870841548
+                  },
+                  {
+                      "emotion_id": 10,
+                      "emotion_value": "Unknown",
+                      "chance": 0.596219862,
+                      "observed": 0.661813092
+                  },
+                  {
+                      "emotion_id": 11,
+                      "emotion_value": "Confused",
+                      "chance": 0.932982157,
+                      "observed": 0.574379795
+                  },
+                  {
+                      "emotion_id": 12,
+                      "emotion_value": "Touched / Moved",
+                      "chance": 0.223713777,
+                      "observed": 0.555421067
+                  },
+                  {
+                      "emotion_id": 13,
+                      "emotion_value": "Inspired",
+                      "chance": 0.808838928,
+                      "observed": 0.67180029
+                  },
+                  {
+                      "emotion_id": 14,
+                      "emotion_value": "Reflective",
+                      "chance": 0.698701076,
+                      "observed": 0.490840152
+                  },
+                  {
+                      "emotion_id": 15,
+                      "emotion_value": "Grateful",
+                      "chance": 0.050672837,
+                      "observed": 0.550347043
+                  },
+                  {
+                      "emotion_id": 16,
+                      "emotion_value": "Frustration",
+                      "chance": 0.917022896,
+                      "observed": 0.952225885
+                  },
+                  {
+                      "emotion_id": 17,
+                      "emotion_value": "Shame",
+                      "chance": 0.027129028,
+                      "observed": 0.372781806
+                  },
+                  {
+                      "emotion_id": 18,
+                      "emotion_value": "Satisfaction (Relief)",
+                      "chance": 0.296953721,
+                      "observed": 0.606976747
+                  },
+                  {
+                      "emotion_id": 19,
+                      "emotion_value": "Affection",
+                      "chance": 0.81386346,
+                      "observed": 0.782552876
+                  },
+                  {
+                      "emotion_id": 20,
+                      "emotion_value": "Dislike",
+                      "chance": 0.418289982,
+                      "observed": 0.48961922
+                  },
+                  {
+                      "emotion_id": 21,
+                      "emotion_value": "Enthusiasm",
+                      "chance": 0.213557123,
+                      "observed": 0.579729077
+                  },
+                  {
+                      "emotion_id": 22,
+                      "emotion_value": "Embarrassment",
+                      "chance": 0.386202316,
+                      "observed": 0.841289332
+                  },
+                  {
+                      "emotion_id": 23,
+                      "emotion_value": "Amused",
+                      "chance": 0.543483878,
+                      "observed": 0.674076145
+                  },
+                  {
+                      "emotion_id": 24,
+                      "emotion_value": "Attraction",
+                      "chance": 0.662228724,
+                      "observed": 0.20598512
+                  }
+              ]
+          },
+          {
+              "userGroup": [
+                  10,
+                  15
+              ],
+              "emotions": [
+                  {
+                      "emotion_id": 1,
+                      "emotion_value": "Anger / Frustration",
+                      "chance": 0.374763347,
+                      "observed": 0.187937483
+                  },
+                  {
+                      "emotion_id": 2,
+                      "emotion_value": "Anticipation / Hope",
+                      "chance": 0.261807043,
+                      "observed": 0.826358418
+                  },
+                  {
+                      "emotion_id": 3,
+                      "emotion_value": "Joy / Happiness",
+                      "chance": 0.423895715,
+                      "observed": 0.183794395
+                  },
+                  {
+                      "emotion_id": 4,
+                      "emotion_value": "trust",
+                      "chance": 0.832777121,
+                      "observed": 0.921359029
+                  },
+                  {
+                      "emotion_id": 5,
+                      "emotion_value": "Disturbed / Disgust",
+                      "chance": 0.988320452,
+                      "observed": 0.764855664
+                  },
+                  {
+                      "emotion_id": 6,
+                      "emotion_value": "Surprise",
+                      "chance": 0.020113975,
+                      "observed": 0.718514286
+                  },
+                  {
+                      "emotion_id": 7,
+                      "emotion_value": "Sadness",
+                      "chance": 0.19305987,
+                      "observed": 0.656319573
+                  },
+                  {
+                      "emotion_id": 8,
+                      "emotion_value": "Disgust",
+                      "chance": 0.445003304,
+                      "observed": 0.443095446
+                  },
+                  {
+                      "emotion_id": 9,
+                      "emotion_value": "No emotion",
+                      "chance": 0.341175558,
+                      "observed": 0.68949411
+                  },
+                  {
+                      "emotion_id": 10,
+                      "emotion_value": "Unknown",
+                      "chance": 0.865043507,
+                      "observed": 0.148043528
+                  },
+                  {
+                      "emotion_id": 11,
+                      "emotion_value": "Confused",
+                      "chance": 0.278684943,
+                      "observed": 0.121691945
+                  },
+                  {
+                      "emotion_id": 12,
+                      "emotion_value": "Touched / Moved",
+                      "chance": 0.223258442,
+                      "observed": 0.655898999
+                  },
+                  {
+                      "emotion_id": 13,
+                      "emotion_value": "Inspired",
+                      "chance": 0.779134003,
+                      "observed": 0.986512971
+                  },
+                  {
+                      "emotion_id": 14,
+                      "emotion_value": "Reflective",
+                      "chance": 0.921494604,
+                      "observed": 0.548388467
+                  },
+                  {
+                      "emotion_id": 15,
+                      "emotion_value": "Grateful",
+                      "chance": 0.0332306,
+                      "observed": 0.540839169
+                  },
+                  {
+                      "emotion_id": 16,
+                      "emotion_value": "Frustration",
+                      "chance": 0.449741932,
+                      "observed": 0.661396787
+                  },
+                  {
+                      "emotion_id": 17,
+                      "emotion_value": "Shame",
+                      "chance": 0.775927002,
+                      "observed": 0.565252142
+                  },
+                  {
+                      "emotion_id": 18,
+                      "emotion_value": "Satisfaction (Relief)",
+                      "chance": 0.786533357,
+                      "observed": 0.799817136
+                  },
+                  {
+                      "emotion_id": 19,
+                      "emotion_value": "Affection",
+                      "chance": 0.788843947,
+                      "observed": 0.062827526
+                  },
+                  {
+                      "emotion_id": 20,
+                      "emotion_value": "Dislike",
+                      "chance": 0.80410664,
+                      "observed": 0.317025793
+                  },
+                  {
+                      "emotion_id": 21,
+                      "emotion_value": "Enthusiasm",
+                      "chance": 0.903987007,
+                      "observed": 0.294433422
+                  },
+                  {
+                      "emotion_id": 22,
+                      "emotion_value": "Embarrassment",
+                      "chance": 0.436826592,
+                      "observed": 0.317311073
+                  },
+                  {
+                      "emotion_id": 23,
+                      "emotion_value": "Amused",
+                      "chance": 0.92689205,
+                      "observed": 0.534490064
+                  },
+                  {
+                      "emotion_id": 24,
+                      "emotion_value": "Attraction",
+                      "chance": 0.979868103,
+                      "observed": 0.191366308
+                  }
+              ]
+          },
+          {
+              "userGroup": [
+                  10,
+                  12
+              ],
+              "emotions": [
+                  {
+                      "emotion_id": 1,
+                      "emotion_value": "Anger / Frustration",
+                      "chance": 0.845210867,
+                      "observed": 0.573228
+                  },
+                  {
+                      "emotion_id": 2,
+                      "emotion_value": "Anticipation / Hope",
+                      "chance": 0.805133245,
+                      "observed": 0.581919019
+                  },
+                  {
+                      "emotion_id": 3,
+                      "emotion_value": "Joy / Happiness",
+                      "chance": 0.734128266,
+                      "observed": 0.521657592
+                  },
+                  {
+                      "emotion_id": 4,
+                      "emotion_value": "trust",
+                      "chance": 0.298373919,
+                      "observed": 0.157401226
+                  },
+                  {
+                      "emotion_id": 5,
+                      "emotion_value": "Disturbed / Disgust",
+                      "chance": 0.403733455,
+                      "observed": 0.312993343
+                  },
+                  {
+                      "emotion_id": 6,
+                      "emotion_value": "Surprise",
+                      "chance": 0.358221019,
+                      "observed": 0.403293508
+                  },
+                  {
+                      "emotion_id": 7,
+                      "emotion_value": "Sadness",
+                      "chance": 0.95019359,
+                      "observed": 0.066077966
+                  },
+                  {
+                      "emotion_id": 8,
+                      "emotion_value": "Disgust",
+                      "chance": 0.513862256,
+                      "observed": 0.853566819
+                  },
+                  {
+                      "emotion_id": 9,
+                      "emotion_value": "No emotion",
+                      "chance": 0.636689216,
+                      "observed": 0.660897646
+                  },
+                  {
+                      "emotion_id": 10,
+                      "emotion_value": "Unknown",
+                      "chance": 0.245781752,
+                      "observed": 0.631015551
+                  },
+                  {
+                      "emotion_id": 11,
+                      "emotion_value": "Confused",
+                      "chance": 0.966498829,
+                      "observed": 0.014119996
+                  },
+                  {
+                      "emotion_id": 12,
+                      "emotion_value": "Touched / Moved",
+                      "chance": 0.055197691,
+                      "observed": 0.520651259
+                  },
+                  {
+                      "emotion_id": 13,
+                      "emotion_value": "Inspired",
+                      "chance": 0.866978809,
+                      "observed": 0.452825923
+                  },
+                  {
+                      "emotion_id": 14,
+                      "emotion_value": "Reflective",
+                      "chance": 0.364508189,
+                      "observed": 0.120622122
+                  },
+                  {
+                      "emotion_id": 15,
+                      "emotion_value": "Grateful",
+                      "chance": 0.908232346,
+                      "observed": 0.074136128
+                  },
+                  {
+                      "emotion_id": 16,
+                      "emotion_value": "Frustration",
+                      "chance": 0.432059959,
+                      "observed": 0.123130021
+                  },
+                  {
+                      "emotion_id": 17,
+                      "emotion_value": "Shame",
+                      "chance": 0.196933647,
+                      "observed": 0.29522778
+                  },
+                  {
+                      "emotion_id": 18,
+                      "emotion_value": "Satisfaction (Relief)",
+                      "chance": 0.013556142,
+                      "observed": 0.755125541
+                  },
+                  {
+                      "emotion_id": 19,
+                      "emotion_value": "Affection",
+                      "chance": 0.18502248,
+                      "observed": 0.990050118
+                  },
+                  {
+                      "emotion_id": 20,
+                      "emotion_value": "Dislike",
+                      "chance": 0.474552704,
+                      "observed": 0.312693819
+                  },
+                  {
+                      "emotion_id": 21,
+                      "emotion_value": "Enthusiasm",
+                      "chance": 0.774706153,
+                      "observed": 0.761215804
+                  },
+                  {
+                      "emotion_id": 22,
+                      "emotion_value": "Embarrassment",
+                      "chance": 0.149022077,
+                      "observed": 0.311764001
+                  },
+                  {
+                      "emotion_id": 23,
+                      "emotion_value": "Amused",
+                      "chance": 0.115311172,
+                      "observed": 0.74263397
+                  },
+                  {
+                      "emotion_id": 24,
+                      "emotion_value": "Attraction",
+                      "chance": 0.748042092,
+                      "observed": 0.064442779
+                  }
+              ]
+          },
+          {
+              "userGroup": [
+                  10,
+                  11
+              ],
+              "emotions": [
+                  {
+                      "emotion_id": 1,
+                      "emotion_value": "Anger / Frustration",
+                      "chance": 0.26578836,
+                      "observed": 0.492731085
+                  },
+                  {
+                      "emotion_id": 2,
+                      "emotion_value": "Anticipation / Hope",
+                      "chance": 0.160187139,
+                      "observed": 0.01607122
+                  },
+                  {
+                      "emotion_id": 3,
+                      "emotion_value": "Joy / Happiness",
+                      "chance": 0.930315958,
+                      "observed": 0.60011739
+                  },
+                  {
+                      "emotion_id": 4,
+                      "emotion_value": "trust",
+                      "chance": 0.502353796,
+                      "observed": 0.933299143
+                  },
+                  {
+                      "emotion_id": 5,
+                      "emotion_value": "Disturbed / Disgust",
+                      "chance": 0.895133979,
+                      "observed": 0.230056323
+                  },
+                  {
+                      "emotion_id": 6,
+                      "emotion_value": "Surprise",
+                      "chance": 0.679207009,
+                      "observed": 0.653795164
+                  },
+                  {
+                      "emotion_id": 7,
+                      "emotion_value": "Sadness",
+                      "chance": 0.394277989,
+                      "observed": 0.32976083
+                  },
+                  {
+                      "emotion_id": 8,
+                      "emotion_value": "Disgust",
+                      "chance": 0.167678032,
+                      "observed": 0.526853123
+                  },
+                  {
+                      "emotion_id": 9,
+                      "emotion_value": "No emotion",
+                      "chance": 0.310604417,
+                      "observed": 0.301594174
+                  },
+                  {
+                      "emotion_id": 10,
+                      "emotion_value": "Unknown",
+                      "chance": 0.499736332,
+                      "observed": 0.24380014
+                  },
+                  {
+                      "emotion_id": 11,
+                      "emotion_value": "Confused",
+                      "chance": 0.276722607,
+                      "observed": 0.701800643
+                  },
+                  {
+                      "emotion_id": 12,
+                      "emotion_value": "Touched / Moved",
+                      "chance": 0.458288537,
+                      "observed": 0.783668953
+                  },
+                  {
+                      "emotion_id": 13,
+                      "emotion_value": "Inspired",
+                      "chance": 0.236636553,
+                      "observed": 0.093065023
+                  },
+                  {
+                      "emotion_id": 14,
+                      "emotion_value": "Reflective",
+                      "chance": 0.474787988,
+                      "observed": 0.610067258
+                  },
+                  {
+                      "emotion_id": 15,
+                      "emotion_value": "Grateful",
+                      "chance": 0.259668511,
+                      "observed": 0.121814298
+                  },
+                  {
+                      "emotion_id": 16,
+                      "emotion_value": "Frustration",
+                      "chance": 0.939093247,
+                      "observed": 0.391106238
+                  },
+                  {
+                      "emotion_id": 17,
+                      "emotion_value": "Shame",
+                      "chance": 0.382051133,
+                      "observed": 0.640531798
+                  },
+                  {
+                      "emotion_id": 18,
+                      "emotion_value": "Satisfaction (Relief)",
+                      "chance": 0.352987781,
+                      "observed": 0.658993302
+                  },
+                  {
+                      "emotion_id": 19,
+                      "emotion_value": "Affection",
+                      "chance": 0.854379309,
+                      "observed": 0.481443936
+                  },
+                  {
+                      "emotion_id": 20,
+                      "emotion_value": "Dislike",
+                      "chance": 0.932074587,
+                      "observed": 0.411800626
+                  },
+                  {
+                      "emotion_id": 21,
+                      "emotion_value": "Enthusiasm",
+                      "chance": 0.259983533,
+                      "observed": 0.811402629
+                  },
+                  {
+                      "emotion_id": 22,
+                      "emotion_value": "Embarrassment",
+                      "chance": 0.963880623,
+                      "observed": 0.448877446
+                  },
+                  {
+                      "emotion_id": 23,
+                      "emotion_value": "Amused",
+                      "chance": 0.488016787,
+                      "observed": 0.439823864
+                  },
+                  {
+                      "emotion_id": 24,
+                      "emotion_value": "Attraction",
+                      "chance": 0.44543593,
+                      "observed": 0.966860617
+                  }
+              ]
+          },
+          {
+              "userGroup": [
+                  10,
+                  14
+              ],
+              "emotions": [
+                  {
+                      "emotion_id": 1,
+                      "emotion_value": "Anger / Frustration",
+                      "chance": 0.617900883,
+                      "observed": 0.068474709
+                  },
+                  {
+                      "emotion_id": 2,
+                      "emotion_value": "Anticipation / Hope",
+                      "chance": 0.773145835,
+                      "observed": 0.552567353
+                  },
+                  {
+                      "emotion_id": 3,
+                      "emotion_value": "Joy / Happiness",
+                      "chance": 0.774765836,
+                      "observed": 0.818520348
+                  },
+                  {
+                      "emotion_id": 4,
+                      "emotion_value": "trust",
+                      "chance": 0.510168847,
+                      "observed": 0.485951816
+                  },
+                  {
+                      "emotion_id": 5,
+                      "emotion_value": "Disturbed / Disgust",
+                      "chance": 0.204857467,
+                      "observed": 0.399175505
+                  },
+                  {
+                      "emotion_id": 6,
+                      "emotion_value": "Surprise",
+                      "chance": 0.60530302,
+                      "observed": 0.634998938
+                  },
+                  {
+                      "emotion_id": 7,
+                      "emotion_value": "Sadness",
+                      "chance": 0.730022084,
+                      "observed": 0.363280796
+                  },
+                  {
+                      "emotion_id": 8,
+                      "emotion_value": "Disgust",
+                      "chance": 0.047282782,
+                      "observed": 0.858658163
+                  },
+                  {
+                      "emotion_id": 9,
+                      "emotion_value": "No emotion",
+                      "chance": 0.391320616,
+                      "observed": 0.534263393
+                  },
+                  {
+                      "emotion_id": 10,
+                      "emotion_value": "Unknown",
+                      "chance": 0.224563205,
+                      "observed": 0.405100042
+                  },
+                  {
+                      "emotion_id": 11,
+                      "emotion_value": "Confused",
+                      "chance": 0.294794485,
+                      "observed": 0.254845163
+                  },
+                  {
+                      "emotion_id": 12,
+                      "emotion_value": "Touched / Moved",
+                      "chance": 0.401030316,
+                      "observed": 0.004103337
+                  },
+                  {
+                      "emotion_id": 13,
+                      "emotion_value": "Inspired",
+                      "chance": 0.892261195,
+                      "observed": 0.93866221
+                  },
+                  {
+                      "emotion_id": 14,
+                      "emotion_value": "Reflective",
+                      "chance": 0.34933836,
+                      "observed": 0.204783353
+                  },
+                  {
+                      "emotion_id": 15,
+                      "emotion_value": "Grateful",
+                      "chance": 0.632316423,
+                      "observed": 0.33002957
+                  },
+                  {
+                      "emotion_id": 16,
+                      "emotion_value": "Frustration",
+                      "chance": 0.945788476,
+                      "observed": 0.205222832
+                  },
+                  {
+                      "emotion_id": 17,
+                      "emotion_value": "Shame",
+                      "chance": 0.497280985,
+                      "observed": 0.556763432
+                  },
+                  {
+                      "emotion_id": 18,
+                      "emotion_value": "Satisfaction (Relief)",
+                      "chance": 0.18107566,
+                      "observed": 0.25043693
+                  },
+                  {
+                      "emotion_id": 19,
+                      "emotion_value": "Affection",
+                      "chance": 0.017359193,
+                      "observed": 0.398558472
+                  },
+                  {
+                      "emotion_id": 20,
+                      "emotion_value": "Dislike",
+                      "chance": 0.369511858,
+                      "observed": 0.649254419
+                  },
+                  {
+                      "emotion_id": 21,
+                      "emotion_value": "Enthusiasm",
+                      "chance": 0.350222638,
+                      "observed": 0.572022486
+                  },
+                  {
+                      "emotion_id": 22,
+                      "emotion_value": "Embarrassment",
+                      "chance": 0.355429558,
+                      "observed": 0.901347397
+                  },
+                  {
+                      "emotion_id": 23,
+                      "emotion_value": "Amused",
+                      "chance": 0.362022944,
+                      "observed": 0.667515978
+                  },
+                  {
+                      "emotion_id": 24,
+                      "emotion_value": "Attraction",
+                      "chance": 0.579261671,
+                      "observed": 0.214216382
+                  }
+              ]
+          },
+          {
+              "userGroup": [
+                  14,
+                  11
+              ],
+              "emotions": [
+                  {
+                      "emotion_id": 1,
+                      "emotion_value": "Anger / Frustration",
+                      "chance": 0.22758034,
+                      "observed": 0.871535578
+                  },
+                  {
+                      "emotion_id": 2,
+                      "emotion_value": "Anticipation / Hope",
+                      "chance": 0.66203502,
+                      "observed": 0.45659776
+                  },
+                  {
+                      "emotion_id": 3,
+                      "emotion_value": "Joy / Happiness",
+                      "chance": 0.059023994,
+                      "observed": 0.288178079
+                  },
+                  {
+                      "emotion_id": 4,
+                      "emotion_value": "trust",
+                      "chance": 0.891879047,
+                      "observed": 0.724746713
+                  },
+                  {
+                      "emotion_id": 5,
+                      "emotion_value": "Disturbed / Disgust",
+                      "chance": 0.546609516,
+                      "observed": 0.492088846
+                  },
+                  {
+                      "emotion_id": 6,
+                      "emotion_value": "Surprise",
+                      "chance": 0.789636494,
+                      "observed": 0.902704766
+                  },
+                  {
+                      "emotion_id": 7,
+                      "emotion_value": "Sadness",
+                      "chance": 0.136881107,
+                      "observed": 0.58101609
+                  },
+                  {
+                      "emotion_id": 8,
+                      "emotion_value": "Disgust",
+                      "chance": 0.139600501,
+                      "observed": 0.793727316
+                  },
+                  {
+                      "emotion_id": 9,
+                      "emotion_value": "No emotion",
+                      "chance": 0.493569787,
+                      "observed": 0.029493574
+                  },
+                  {
+                      "emotion_id": 10,
+                      "emotion_value": "Unknown",
+                      "chance": 0.201792073,
+                      "observed": 0.648014384
+                  },
+                  {
+                      "emotion_id": 11,
+                      "emotion_value": "Confused",
+                      "chance": 0.508577054,
+                      "observed": 0.553011283
+                  },
+                  {
+                      "emotion_id": 12,
+                      "emotion_value": "Touched / Moved",
+                      "chance": 0.780199606,
+                      "observed": 0.781610022
+                  },
+                  {
+                      "emotion_id": 13,
+                      "emotion_value": "Inspired",
+                      "chance": 0.773858634,
+                      "observed": 0.515649987
+                  },
+                  {
+                      "emotion_id": 14,
+                      "emotion_value": "Reflective",
+                      "chance": 0.314297539,
+                      "observed": 0.447286922
+                  },
+                  {
+                      "emotion_id": 15,
+                      "emotion_value": "Grateful",
+                      "chance": 0.097447462,
+                      "observed": 0.664043628
+                  },
+                  {
+                      "emotion_id": 16,
+                      "emotion_value": "Frustration",
+                      "chance": 0.479982867,
+                      "observed": 0.497237487
+                  },
+                  {
+                      "emotion_id": 17,
+                      "emotion_value": "Shame",
+                      "chance": 0.880764511,
+                      "observed": 0.077438535
+                  },
+                  {
+                      "emotion_id": 18,
+                      "emotion_value": "Satisfaction (Relief)",
+                      "chance": 0.255249843,
+                      "observed": 0.048684527
+                  },
+                  {
+                      "emotion_id": 19,
+                      "emotion_value": "Affection",
+                      "chance": 0.980192152,
+                      "observed": 0.492553495
+                  },
+                  {
+                      "emotion_id": 20,
+                      "emotion_value": "Dislike",
+                      "chance": 0.56917233,
+                      "observed": 0.421872139
+                  },
+                  {
+                      "emotion_id": 21,
+                      "emotion_value": "Enthusiasm",
+                      "chance": 0.888587257,
+                      "observed": 0.484612267
+                  },
+                  {
+                      "emotion_id": 22,
+                      "emotion_value": "Embarrassment",
+                      "chance": 0.477923243,
+                      "observed": 0.327374339
+                  },
+                  {
+                      "emotion_id": 23,
+                      "emotion_value": "Amused",
+                      "chance": 0.082760958,
+                      "observed": 0.54259749
+                  },
+                  {
+                      "emotion_id": 24,
+                      "emotion_value": "Attraction",
+                      "chance": 0.834876641,
+                      "observed": 0.712101084
+                  }
+              ]
+          }
+      ]
+  },
+  {
+      "date": "2/27/2020",
+      "userGroups": [
+          {
+              "userGroup": [
+                  10,
+                  17
+              ],
+              "emotions": [
+                  {
+                      "emotion_id": 1,
+                      "emotion_value": "Anger / Frustration",
+                      "chance": 0.140824602,
+                      "observed": 0.435096949
+                  },
+                  {
+                      "emotion_id": 2,
+                      "emotion_value": "Anticipation / Hope",
+                      "chance": 0.332132007,
+                      "observed": 0.141049911
+                  },
+                  {
+                      "emotion_id": 3,
+                      "emotion_value": "Joy / Happiness",
+                      "chance": 0.514258507,
+                      "observed": 0.13414751
+                  },
+                  {
+                      "emotion_id": 4,
+                      "emotion_value": "trust",
+                      "chance": 0.140701199,
+                      "observed": 0.430804497
+                  },
+                  {
+                      "emotion_id": 5,
+                      "emotion_value": "Disturbed / Disgust",
+                      "chance": 0.276982618,
+                      "observed": 0.602349247
+                  },
+                  {
+                      "emotion_id": 6,
+                      "emotion_value": "Surprise",
+                      "chance": 0.530905224,
+                      "observed": 0.509908997
+                  },
+                  {
+                      "emotion_id": 7,
+                      "emotion_value": "Sadness",
+                      "chance": 0.104158332,
+                      "observed": 0.678567555
+                  },
+                  {
+                      "emotion_id": 8,
+                      "emotion_value": "Disgust",
+                      "chance": 0.186590805,
+                      "observed": 0.43041525
+                  },
+                  {
+                      "emotion_id": 9,
+                      "emotion_value": "No emotion",
+                      "chance": 0.803224818,
+                      "observed": 0.430951572
+                  },
+                  {
+                      "emotion_id": 10,
+                      "emotion_value": "Unknown",
+                      "chance": 0.055563901,
+                      "observed": 0.474593708
+                  },
+                  {
+                      "emotion_id": 11,
+                      "emotion_value": "Confused",
+                      "chance": 0.011841303,
+                      "observed": 0.004492066
+                  },
+                  {
+                      "emotion_id": 12,
+                      "emotion_value": "Touched / Moved",
+                      "chance": 0.893211307,
+                      "observed": 0.266632516
+                  },
+                  {
+                      "emotion_id": 13,
+                      "emotion_value": "Inspired",
+                      "chance": 0.262479412,
+                      "observed": 0.674044968
+                  },
+                  {
+                      "emotion_id": 14,
+                      "emotion_value": "Reflective",
+                      "chance": 0.571798037,
+                      "observed": 0.482440624
+                  },
+                  {
+                      "emotion_id": 15,
+                      "emotion_value": "Grateful",
+                      "chance": 0.908882403,
+                      "observed": 0.508846249
+                  },
+                  {
+                      "emotion_id": 16,
+                      "emotion_value": "Frustration",
+                      "chance": 0.016786507,
+                      "observed": 0.317943284
+                  },
+                  {
+                      "emotion_id": 17,
+                      "emotion_value": "Shame",
+                      "chance": 0.860264543,
+                      "observed": 0.290307886
+                  },
+                  {
+                      "emotion_id": 18,
+                      "emotion_value": "Satisfaction (Relief)",
+                      "chance": 0.889932114,
+                      "observed": 0.785875589
+                  },
+                  {
+                      "emotion_id": 19,
+                      "emotion_value": "Affection",
+                      "chance": 0.887653723,
+                      "observed": 0.927848821
+                  },
+                  {
+                      "emotion_id": 20,
+                      "emotion_value": "Dislike",
+                      "chance": 0.953096258,
+                      "observed": 0.35090079
+                  },
+                  {
+                      "emotion_id": 21,
+                      "emotion_value": "Enthusiasm",
+                      "chance": 0.612149079,
+                      "observed": 0.631386749
+                  },
+                  {
+                      "emotion_id": 22,
+                      "emotion_value": "Embarrassment",
+                      "chance": 0.334937199,
+                      "observed": 0.080770155
+                  },
+                  {
+                      "emotion_id": 23,
+                      "emotion_value": "Amused",
+                      "chance": 0.22709159,
+                      "observed": 0.130662223
+                  },
+                  {
+                      "emotion_id": 24,
+                      "emotion_value": "Attraction",
+                      "chance": 0.709970654,
+                      "observed": 0.710874416
+                  }
+              ]
+          },
+          {
+              "userGroup": [
+                  10,
+                  15
+              ],
+              "emotions": [
+                  {
+                      "emotion_id": 1,
+                      "emotion_value": "Anger / Frustration",
+                      "chance": 0.190353846,
+                      "observed": 0.642196698
+                  },
+                  {
+                      "emotion_id": 2,
+                      "emotion_value": "Anticipation / Hope",
+                      "chance": 0.471084221,
+                      "observed": 0.021383848
+                  },
+                  {
+                      "emotion_id": 3,
+                      "emotion_value": "Joy / Happiness",
+                      "chance": 0.785907375,
+                      "observed": 0.995920692
+                  },
+                  {
+                      "emotion_id": 4,
+                      "emotion_value": "trust",
+                      "chance": 0.056720091,
+                      "observed": 0.911276679
+                  },
+                  {
+                      "emotion_id": 5,
+                      "emotion_value": "Disturbed / Disgust",
+                      "chance": 0.084739851,
+                      "observed": 0.739491902
+                  },
+                  {
+                      "emotion_id": 6,
+                      "emotion_value": "Surprise",
+                      "chance": 0.832918968,
+                      "observed": 0.510484863
+                  },
+                  {
+                      "emotion_id": 7,
+                      "emotion_value": "Sadness",
+                      "chance": 0.246095428,
+                      "observed": 0.449723092
+                  },
+                  {
+                      "emotion_id": 8,
+                      "emotion_value": "Disgust",
+                      "chance": 0.819808807,
+                      "observed": 0.321260677
+                  },
+                  {
+                      "emotion_id": 9,
+                      "emotion_value": "No emotion",
+                      "chance": 0.537331526,
+                      "observed": 0.10434993
+                  },
+                  {
+                      "emotion_id": 10,
+                      "emotion_value": "Unknown",
+                      "chance": 0.31051637,
+                      "observed": 0.389904944
+                  },
+                  {
+                      "emotion_id": 11,
+                      "emotion_value": "Confused",
+                      "chance": 0.00817827,
+                      "observed": 0.095601896
+                  },
+                  {
+                      "emotion_id": 12,
+                      "emotion_value": "Touched / Moved",
+                      "chance": 0.603617174,
+                      "observed": 0.10443276
+                  },
+                  {
+                      "emotion_id": 13,
+                      "emotion_value": "Inspired",
+                      "chance": 0.01862476,
+                      "observed": 0.258313591
+                  },
+                  {
+                      "emotion_id": 14,
+                      "emotion_value": "Reflective",
+                      "chance": 0.933140326,
+                      "observed": 0.472419948
+                  },
+                  {
+                      "emotion_id": 15,
+                      "emotion_value": "Grateful",
+                      "chance": 0.581807929,
+                      "observed": 0.853519597
+                  },
+                  {
+                      "emotion_id": 16,
+                      "emotion_value": "Frustration",
+                      "chance": 0.073275024,
+                      "observed": 0.7288093
+                  },
+                  {
+                      "emotion_id": 17,
+                      "emotion_value": "Shame",
+                      "chance": 0.453452905,
+                      "observed": 0.581884308
+                  },
+                  {
+                      "emotion_id": 18,
+                      "emotion_value": "Satisfaction (Relief)",
+                      "chance": 0.714143006,
+                      "observed": 0.150387002
+                  },
+                  {
+                      "emotion_id": 19,
+                      "emotion_value": "Affection",
+                      "chance": 0.32583566,
+                      "observed": 0.641080181
+                  },
+                  {
+                      "emotion_id": 20,
+                      "emotion_value": "Dislike",
+                      "chance": 0.673495748,
+                      "observed": 0.78547065
+                  },
+                  {
+                      "emotion_id": 21,
+                      "emotion_value": "Enthusiasm",
+                      "chance": 0.595247128,
+                      "observed": 0.939035586
+                  },
+                  {
+                      "emotion_id": 22,
+                      "emotion_value": "Embarrassment",
+                      "chance": 0.557536737,
+                      "observed": 0.976679854
+                  },
+                  {
+                      "emotion_id": 23,
+                      "emotion_value": "Amused",
+                      "chance": 0.350879949,
+                      "observed": 0.343697212
+                  },
+                  {
+                      "emotion_id": 24,
+                      "emotion_value": "Attraction",
+                      "chance": 0.086127878,
+                      "observed": 0.836652023
+                  }
+              ]
+          },
+          {
+              "userGroup": [
+                  10,
+                  12
+              ],
+              "emotions": [
+                  {
+                      "emotion_id": 1,
+                      "emotion_value": "Anger / Frustration",
+                      "chance": 0.058885322,
+                      "observed": 0.755234327
+                  },
+                  {
+                      "emotion_id": 2,
+                      "emotion_value": "Anticipation / Hope",
+                      "chance": 0.661735735,
+                      "observed": 0.548840949
+                  },
+                  {
+                      "emotion_id": 3,
+                      "emotion_value": "Joy / Happiness",
+                      "chance": 0.159420546,
+                      "observed": 0.157269845
+                  },
+                  {
+                      "emotion_id": 4,
+                      "emotion_value": "trust",
+                      "chance": 0.881380146,
+                      "observed": 0.524392821
+                  },
+                  {
+                      "emotion_id": 5,
+                      "emotion_value": "Disturbed / Disgust",
+                      "chance": 0.137127167,
+                      "observed": 0.771358224
+                  },
+                  {
+                      "emotion_id": 6,
+                      "emotion_value": "Surprise",
+                      "chance": 0.861261704,
+                      "observed": 0.518546204
+                  },
+                  {
+                      "emotion_id": 7,
+                      "emotion_value": "Sadness",
+                      "chance": 0.266693628,
+                      "observed": 0.876748223
+                  },
+                  {
+                      "emotion_id": 8,
+                      "emotion_value": "Disgust",
+                      "chance": 0.856418439,
+                      "observed": 0.798065874
+                  },
+                  {
+                      "emotion_id": 9,
+                      "emotion_value": "No emotion",
+                      "chance": 0.991057365,
+                      "observed": 0.701751591
+                  },
+                  {
+                      "emotion_id": 10,
+                      "emotion_value": "Unknown",
+                      "chance": 0.746863816,
+                      "observed": 0.152364332
+                  },
+                  {
+                      "emotion_id": 11,
+                      "emotion_value": "Confused",
+                      "chance": 0.1587339,
+                      "observed": 0.151764901
+                  },
+                  {
+                      "emotion_id": 12,
+                      "emotion_value": "Touched / Moved",
+                      "chance": 0.320133967,
+                      "observed": 0.183359778
+                  },
+                  {
+                      "emotion_id": 13,
+                      "emotion_value": "Inspired",
+                      "chance": 0.692699036,
+                      "observed": 0.228515805
+                  },
+                  {
+                      "emotion_id": 14,
+                      "emotion_value": "Reflective",
+                      "chance": 0.449066223,
+                      "observed": 0.168467249
+                  },
+                  {
+                      "emotion_id": 15,
+                      "emotion_value": "Grateful",
+                      "chance": 0.624961999,
+                      "observed": 0.863979009
+                  },
+                  {
+                      "emotion_id": 16,
+                      "emotion_value": "Frustration",
+                      "chance": 0.589180689,
+                      "observed": 0.74641547
+                  },
+                  {
+                      "emotion_id": 17,
+                      "emotion_value": "Shame",
+                      "chance": 0.967343616,
+                      "observed": 0.339775462
+                  },
+                  {
+                      "emotion_id": 18,
+                      "emotion_value": "Satisfaction (Relief)",
+                      "chance": 0.529182364,
+                      "observed": 0.733102799
+                  },
+                  {
+                      "emotion_id": 19,
+                      "emotion_value": "Affection",
+                      "chance": 0.622526091,
+                      "observed": 0.944098038
+                  },
+                  {
+                      "emotion_id": 20,
+                      "emotion_value": "Dislike",
+                      "chance": 0.645560758,
+                      "observed": 0.313675121
+                  },
+                  {
+                      "emotion_id": 21,
+                      "emotion_value": "Enthusiasm",
+                      "chance": 0.278022922,
+                      "observed": 0.35622495
+                  },
+                  {
+                      "emotion_id": 22,
+                      "emotion_value": "Embarrassment",
+                      "chance": 0.441632321,
+                      "observed": 0.894029084
+                  },
+                  {
+                      "emotion_id": 23,
+                      "emotion_value": "Amused",
+                      "chance": 0.943882289,
+                      "observed": 0.405554092
+                  },
+                  {
+                      "emotion_id": 24,
+                      "emotion_value": "Attraction",
+                      "chance": 0.549460516,
+                      "observed": 0.120624796
+                  }
+              ]
+          },
+          {
+              "userGroup": [
+                  10,
+                  11
+              ],
+              "emotions": [
+                  {
+                      "emotion_id": 1,
+                      "emotion_value": "Anger / Frustration",
+                      "chance": 0.501556408,
+                      "observed": 0.115019199
+                  },
+                  {
+                      "emotion_id": 2,
+                      "emotion_value": "Anticipation / Hope",
+                      "chance": 0.781115777,
+                      "observed": 0.917525709
+                  },
+                  {
+                      "emotion_id": 3,
+                      "emotion_value": "Joy / Happiness",
+                      "chance": 0.63165047,
+                      "observed": 0.098134545
+                  },
+                  {
+                      "emotion_id": 4,
+                      "emotion_value": "trust",
+                      "chance": 0.539786315,
+                      "observed": 0.162964938
+                  },
+                  {
+                      "emotion_id": 5,
+                      "emotion_value": "Disturbed / Disgust",
+                      "chance": 0.281447308,
+                      "observed": 0.549734393
+                  },
+                  {
+                      "emotion_id": 6,
+                      "emotion_value": "Surprise",
+                      "chance": 0.855748326,
+                      "observed": 0.203092518
+                  },
+                  {
+                      "emotion_id": 7,
+                      "emotion_value": "Sadness",
+                      "chance": 0.089533563,
+                      "observed": 0.736224209
+                  },
+                  {
+                      "emotion_id": 8,
+                      "emotion_value": "Disgust",
+                      "chance": 0.382594855,
+                      "observed": 0.284665822
+                  },
+                  {
+                      "emotion_id": 9,
+                      "emotion_value": "No emotion",
+                      "chance": 0.221663223,
+                      "observed": 0.133254951
+                  },
+                  {
+                      "emotion_id": 10,
+                      "emotion_value": "Unknown",
+                      "chance": 0.440589023,
+                      "observed": 0.771682746
+                  },
+                  {
+                      "emotion_id": 11,
+                      "emotion_value": "Confused",
+                      "chance": 0.539069566,
+                      "observed": 0.695110442
+                  },
+                  {
+                      "emotion_id": 12,
+                      "emotion_value": "Touched / Moved",
+                      "chance": 0.442803678,
+                      "observed": 0.452858775
+                  },
+                  {
+                      "emotion_id": 13,
+                      "emotion_value": "Inspired",
+                      "chance": 0.225554383,
+                      "observed": 0.317420388
+                  },
+                  {
+                      "emotion_id": 14,
+                      "emotion_value": "Reflective",
+                      "chance": 0.213161921,
+                      "observed": 0.139496244
+                  },
+                  {
+                      "emotion_id": 15,
+                      "emotion_value": "Grateful",
+                      "chance": 0.809037565,
+                      "observed": 0.604035806
+                  },
+                  {
+                      "emotion_id": 16,
+                      "emotion_value": "Frustration",
+                      "chance": 0.626610079,
+                      "observed": 0.776871924
+                  },
+                  {
+                      "emotion_id": 17,
+                      "emotion_value": "Shame",
+                      "chance": 0.257645742,
+                      "observed": 0.678417689
+                  },
+                  {
+                      "emotion_id": 18,
+                      "emotion_value": "Satisfaction (Relief)",
+                      "chance": 0.072596029,
+                      "observed": 0.23610821
+                  },
+                  {
+                      "emotion_id": 19,
+                      "emotion_value": "Affection",
+                      "chance": 0.282165204,
+                      "observed": 0.42600932
+                  },
+                  {
+                      "emotion_id": 20,
+                      "emotion_value": "Dislike",
+                      "chance": 0.43606393,
+                      "observed": 0.947922996
+                  },
+                  {
+                      "emotion_id": 21,
+                      "emotion_value": "Enthusiasm",
+                      "chance": 0.269075302,
+                      "observed": 0.729386704
+                  },
+                  {
+                      "emotion_id": 22,
+                      "emotion_value": "Embarrassment",
+                      "chance": 0.581732059,
+                      "observed": 0.373180327
+                  },
+                  {
+                      "emotion_id": 23,
+                      "emotion_value": "Amused",
+                      "chance": 0.524320789,
+                      "observed": 0.614853755
+                  },
+                  {
+                      "emotion_id": 24,
+                      "emotion_value": "Attraction",
+                      "chance": 0.84329538,
+                      "observed": 0.410756654
+                  }
+              ]
+          },
+          {
+              "userGroup": [
+                  10,
+                  14
+              ],
+              "emotions": [
+                  {
+                      "emotion_id": 1,
+                      "emotion_value": "Anger / Frustration",
+                      "chance": 0.594783109,
+                      "observed": 0.744755203
+                  },
+                  {
+                      "emotion_id": 2,
+                      "emotion_value": "Anticipation / Hope",
+                      "chance": 0.981282272,
+                      "observed": 0.50836306
+                  },
+                  {
+                      "emotion_id": 3,
+                      "emotion_value": "Joy / Happiness",
+                      "chance": 0.815119903,
+                      "observed": 0.569862006
+                  },
+                  {
+                      "emotion_id": 4,
+                      "emotion_value": "trust",
+                      "chance": 0.638121297,
+                      "observed": 0.262941207
+                  },
+                  {
+                      "emotion_id": 5,
+                      "emotion_value": "Disturbed / Disgust",
+                      "chance": 0.447948596,
+                      "observed": 0.1161014
+                  },
+                  {
+                      "emotion_id": 6,
+                      "emotion_value": "Surprise",
+                      "chance": 0.123938135,
+                      "observed": 0.289674819
+                  },
+                  {
+                      "emotion_id": 7,
+                      "emotion_value": "Sadness",
+                      "chance": 0.780547145,
+                      "observed": 0.460564617
+                  },
+                  {
+                      "emotion_id": 8,
+                      "emotion_value": "Disgust",
+                      "chance": 0.417430688,
+                      "observed": 0.690537759
+                  },
+                  {
+                      "emotion_id": 9,
+                      "emotion_value": "No emotion",
+                      "chance": 0.469589381,
+                      "observed": 0.883931875
+                  },
+                  {
+                      "emotion_id": 10,
+                      "emotion_value": "Unknown",
+                      "chance": 0.939975784,
+                      "observed": 0.386626323
+                  },
+                  {
+                      "emotion_id": 11,
+                      "emotion_value": "Confused",
+                      "chance": 0.703683561,
+                      "observed": 0.545633934
+                  },
+                  {
+                      "emotion_id": 12,
+                      "emotion_value": "Touched / Moved",
+                      "chance": 0.859235714,
+                      "observed": 0.937549155
+                  },
+                  {
+                      "emotion_id": 13,
+                      "emotion_value": "Inspired",
+                      "chance": 0.511189105,
+                      "observed": 0.368115811
+                  },
+                  {
+                      "emotion_id": 14,
+                      "emotion_value": "Reflective",
+                      "chance": 0.497550177,
+                      "observed": 0.958328272
+                  },
+                  {
+                      "emotion_id": 15,
+                      "emotion_value": "Grateful",
+                      "chance": 0.307465056,
+                      "observed": 0.250662638
+                  },
+                  {
+                      "emotion_id": 16,
+                      "emotion_value": "Frustration",
+                      "chance": 0.938020488,
+                      "observed": 0.478676502
+                  },
+                  {
+                      "emotion_id": 17,
+                      "emotion_value": "Shame",
+                      "chance": 0.619992431,
+                      "observed": 0.146855509
+                  },
+                  {
+                      "emotion_id": 18,
+                      "emotion_value": "Satisfaction (Relief)",
+                      "chance": 0.090832199,
+                      "observed": 0.58255083
+                  },
+                  {
+                      "emotion_id": 19,
+                      "emotion_value": "Affection",
+                      "chance": 0.712121053,
+                      "observed": 0.886534677
+                  },
+                  {
+                      "emotion_id": 20,
+                      "emotion_value": "Dislike",
+                      "chance": 0.719612103,
+                      "observed": 0.239884796
+                  },
+                  {
+                      "emotion_id": 21,
+                      "emotion_value": "Enthusiasm",
+                      "chance": 0.370217165,
+                      "observed": 0.739975525
+                  },
+                  {
+                      "emotion_id": 22,
+                      "emotion_value": "Embarrassment",
+                      "chance": 0.678745427,
+                      "observed": 0.150463856
+                  },
+                  {
+                      "emotion_id": 23,
+                      "emotion_value": "Amused",
+                      "chance": 0.67089368,
+                      "observed": 0.255189937
+                  },
+                  {
+                      "emotion_id": 24,
+                      "emotion_value": "Attraction",
+                      "chance": 0.587087834,
+                      "observed": 0.657017033
+                  }
+              ]
+          },
+          {
+              "userGroup": [
+                  14,
+                  11
+              ],
+              "emotions": [
+                  {
+                      "emotion_id": 1,
+                      "emotion_value": "Anger / Frustration",
+                      "chance": 0.512808422,
+                      "observed": 0.837644041
+                  },
+                  {
+                      "emotion_id": 2,
+                      "emotion_value": "Anticipation / Hope",
+                      "chance": 0.448565424,
+                      "observed": 0.596952218
+                  },
+                  {
+                      "emotion_id": 3,
+                      "emotion_value": "Joy / Happiness",
+                      "chance": 0.579833816,
+                      "observed": 0.177281892
+                  },
+                  {
+                      "emotion_id": 4,
+                      "emotion_value": "trust",
+                      "chance": 0.092892569,
+                      "observed": 0.139788237
+                  },
+                  {
+                      "emotion_id": 5,
+                      "emotion_value": "Disturbed / Disgust",
+                      "chance": 0.794732821,
+                      "observed": 0.479299748
+                  },
+                  {
+                      "emotion_id": 6,
+                      "emotion_value": "Surprise",
+                      "chance": 0.951345207,
+                      "observed": 0.144245794
+                  },
+                  {
+                      "emotion_id": 7,
+                      "emotion_value": "Sadness",
+                      "chance": 0.717857991,
+                      "observed": 0.13114058
+                  },
+                  {
+                      "emotion_id": 8,
+                      "emotion_value": "Disgust",
+                      "chance": 0.91004428,
+                      "observed": 0.54246734
+                  },
+                  {
+                      "emotion_id": 9,
+                      "emotion_value": "No emotion",
+                      "chance": 0.681722219,
+                      "observed": 0.004790706
+                  },
+                  {
+                      "emotion_id": 10,
+                      "emotion_value": "Unknown",
+                      "chance": 0.408780326,
+                      "observed": 0.146510696
+                  },
+                  {
+                      "emotion_id": 11,
+                      "emotion_value": "Confused",
+                      "chance": 0.102859357,
+                      "observed": 0.810842656
+                  },
+                  {
+                      "emotion_id": 12,
+                      "emotion_value": "Touched / Moved",
+                      "chance": 0.39405834,
+                      "observed": 0.735126114
+                  },
+                  {
+                      "emotion_id": 13,
+                      "emotion_value": "Inspired",
+                      "chance": 0.882190609,
+                      "observed": 0.21635988
+                  },
+                  {
+                      "emotion_id": 14,
+                      "emotion_value": "Reflective",
+                      "chance": 0.470120079,
+                      "observed": 0.616749961
+                  },
+                  {
+                      "emotion_id": 15,
+                      "emotion_value": "Grateful",
+                      "chance": 0.604709188,
+                      "observed": 0.980379004
+                  },
+                  {
+                      "emotion_id": 16,
+                      "emotion_value": "Frustration",
+                      "chance": 0.364024509,
+                      "observed": 0.841709817
+                  },
+                  {
+                      "emotion_id": 17,
+                      "emotion_value": "Shame",
+                      "chance": 0.982987996,
+                      "observed": 0.842414365
+                  },
+                  {
+                      "emotion_id": 18,
+                      "emotion_value": "Satisfaction (Relief)",
+                      "chance": 0.635905641,
+                      "observed": 0.565654899
+                  },
+                  {
+                      "emotion_id": 19,
+                      "emotion_value": "Affection",
+                      "chance": 0.654867191,
+                      "observed": 0.415972025
+                  },
+                  {
+                      "emotion_id": 20,
+                      "emotion_value": "Dislike",
+                      "chance": 0.762076317,
+                      "observed": 0.69222646
+                  },
+                  {
+                      "emotion_id": 21,
+                      "emotion_value": "Enthusiasm",
+                      "chance": 0.241993441,
+                      "observed": 0.658793585
+                  },
+                  {
+                      "emotion_id": 22,
+                      "emotion_value": "Embarrassment",
+                      "chance": 0.858120041,
+                      "observed": 0.269631811
+                  },
+                  {
+                      "emotion_id": 23,
+                      "emotion_value": "Amused",
+                      "chance": 0.326600922,
+                      "observed": 0.948822329
+                  },
+                  {
+                      "emotion_id": 24,
+                      "emotion_value": "Attraction",
+                      "chance": 0.027337986,
+                      "observed": 0.141576055
+                  }
+              ]
+          }
+      ]
+  }
+]
